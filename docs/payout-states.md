@@ -52,7 +52,7 @@ Changed while building Home against the held-out data (17 to 30 Nov). Grace Liu 
 
 - `payout_scheduled`: removed "ending {last4}". The payout rows in the held-out data don't include bank digits, and the response contract has no field for them.
 - `negative_after_refund`: "the catering refund" is now "a refund". In the held-out data the refund that caused the negative balance was a canceled wedding cake order, not catering.
-- `no_payout`: added the reason "your next automatic payout hasn't been created yet". It covers money that is available but has no payout yet, which happens on 9 of the 13 held-out days.
+- `no_payout`: added the reason "your next automatic payout hasn't been created yet". It covers money that is available but has no payout yet, which happens on 8 of the 14 held-out days.
 
 ## Notes on the source data
 
