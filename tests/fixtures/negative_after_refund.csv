@@ -1,0 +1,5 @@
+balance_transaction_id,account_id,created_at,available_on,type,source_id,amount,fee,net,currency,balance_status,payout_id,payout_status,payout_arrival_date,payout_failure_reason,running_available_balance,running_pending_balance,description
+txn_1,acct_test_fixture,2026-11-10,2026-11-12,charge,src_1,2310.00,0.0,2310.00,usd,available,,,,,2310.00,0,Catering order - office breakfast
+txn_2,acct_test_fixture,2026-11-12,2026-11-12,payout,src_2,-2310.00,0.0,-2310.00,usd,available,po_2,paid,2026-11-14,,0.00,0,Automatic payout to bank ****6621
+txn_3,acct_test_fixture,2026-11-14,2026-11-14,refund,src_3,-1874.55,0.0,-1874.55,usd,available,,,,,-1874.55,0,Refund of catering order - office breakfast
+txn_4,acct_test_fixture,2026-11-14,2026-11-14,payout_cancel,src_4,0.00,0.0,0.00,usd,available,po_4,canceled,2026-11-16,,-1874.55,0,Payout canceled - funds returned to Stripe balance

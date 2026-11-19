@@ -1,0 +1,5 @@
+balance_transaction_id,account_id,created_at,available_on,type,source_id,amount,fee,net,currency,balance_status,payout_id,payout_status,payout_arrival_date,payout_failure_reason,running_available_balance,running_pending_balance,description
+txn_1,acct_test_fixture,2026-11-01,2026-11-03,charge,src_1,100.00,0.0,100.00,usd,pending,,,,,0.00,100.00,Morning coffee and croissant
+txn_2,acct_test_fixture,2026-11-12,2026-11-12,payout,src_2,-640.00,0.0,-640.00,usd,available,po_2,paid,2026-11-14,,0.00,100.00,Automatic payout to bank ****6621
+txn_3,acct_test_fixture,2026-11-14,2026-11-19,charge,src_3,412.30,0.0,412.30,usd,pending,,,,,0.00,512.30,Catering order - office breakfast
+txn_4,acct_test_fixture,2026-11-15,2026-11-21,charge,src_4,20.00,0.0,20.00,usd,pending,,,,,0.00,532.30,Birthday cake pickup

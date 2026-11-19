@@ -1,0 +1,3 @@
+balance_transaction_id,account_id,created_at,available_on,type,source_id,amount,fee,net,currency,balance_status,payout_id,payout_status,payout_arrival_date,payout_failure_reason,running_available_balance,running_pending_balance,description
+txn_1,acct_test_fixture,2026-11-01,2026-11-01,charge,src_1,50.00,0.0,50.00,usd,available,,,,,50.00,0,Birthday cake pickup
+txn_2,acct_test_fixture,2026-11-02,2026-11-02,payout,src_2,-50.00,0.0,-50.00,usd,available,po_2,paid,2026-11-04,,0.00,0,Automatic payout to bank ****6621

@@ -1,0 +1,4 @@
+balance_transaction_id,account_id,created_at,available_on,type,source_id,amount,fee,net,currency,balance_status,payout_id,payout_status,payout_arrival_date,payout_failure_reason,running_available_balance,running_pending_balance,description
+txn_1,acct_test_fixture,2026-10-01,2026-10-02,charge,src_1,1234.56,0.0,1234.56,usd,available,,,,,1234.56,0,Morning coffee and croissant
+txn_2,acct_test_fixture,2026-10-03,2026-10-03,payout,src_2,-1234.56,0.0,-1234.56,usd,available,po_2,pending,2026-10-07,,0.00,0,Automatic payout to bank ****4242
+txn_3,acct_test_fixture,2026-10-03,2026-10-03,payout,src_3,-50.00,0.0,-50.00,usd,available,po_3,pending,2026-10-09,,0.00,0,Automatic payout to bank ****4242

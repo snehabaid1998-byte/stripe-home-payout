@@ -1,0 +1,293 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<title>Stripe Home: payday frames</title>
+<style>
+  :root{
+    /* Stripe Elements Appearance API, theme 'stripe' variables */
+    --colorPrimary:#0570de; --colorBackground:#ffffff; --colorText:#30313d; --colorDanger:#df1b41;
+    --fontFamily:'Ideal Sans', system-ui, sans-serif; --spacingUnit:2px; --borderRadius:4px;
+    --bg:#f6f8fa; --card:var(--colorBackground); --line:#e6e6e6; --ink:var(--colorText); --muted:#6d6e78;
+    --brand:var(--colorPrimary); --green:#1a7f4b; --greenbg:#e8f5ee; --amber:#a35c00; --amberbg:#fff4e0;
+    --red:var(--colorDanger); --redbg:#fdecf0; --grey:#6d6e78; --greybg:#f2f2f4;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--fontFamily);background:#d9dde3;color:var(--ink);padding:40px;display:flex;flex-direction:column;gap:60px;align-items:center}
+  .label{width:1440px;font-size:22px;font-weight:700;margin-bottom:12px}
+  .label small{display:block;font-size:14px;font-weight:400;color:var(--muted);margin-top:4px}
+  .frame{width:1440px;background:var(--bg);display:flex;position:relative;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.12)}
+  .fold{position:absolute;left:0;right:0;top:900px;border-top:2px dashed #ff4f8b;z-index:5}
+  .fold span{position:absolute;right:12px;top:-22px;background:#ff4f8b;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px}
+  nav{width:220px;background:#fff;border-right:1px solid var(--line);padding:24px 16px;font-size:14px;flex-shrink:0}
+  nav .acct{font-weight:700;margin-bottom:24px}
+  nav div.i{padding:8px 10px;border-radius:6px;color:var(--grey)}
+  nav div.on{background:#e7f1fc;color:var(--brand);font-weight:600}
+  main{flex:1;padding:24px 32px 40px}
+  .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+  .search{width:360px;height:36px;background:#fff;border:1px solid var(--line);border-radius:var(--borderRadius);padding:8px 12px;color:var(--muted);font-size:13px}
+  h1{font-size:28px;margin-bottom:16px}
+  .grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:88px;gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--borderRadius);padding:calc(var(--spacingUnit)*8) calc(var(--spacingUnit)*10);display:flex;flex-direction:column;gap:6px;overflow:hidden}
+  .w12{grid-column:span 12}.w6{grid-column:span 6}
+  .h1{grid-row:span 1}.h2{grid-row:span 2}.h3{grid-row:span 3}.h4{grid-row:span 4}
+  .ct{font-size:13px;font-weight:600;color:var(--muted);display:flex;justify-content:space-between}
+  .ct{gap:16px}
+  .ct em{font-style:normal;font-weight:400;font-size:11px;color:#a3acb9}
+  .big{font-size:28px;font-weight:700}
+  .sub{font-size:13px;color:var(--muted)}
+  a.lk{color:var(--brand);font-size:13px;text-decoration:none;font-weight:600}
+  .tok{background:#e7f1fc;color:var(--brand);border-radius:4px;padding:0 5px;font-family:ui-monospace,Consolas,monospace;font-size:.85em}
+  /* payout card */
+  .payout{border-width:2px;padding:20px 24px;flex-direction:row;gap:24px;align-items:center}
+  .payout .ico{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+  .payout .msg{font-size:18px;line-height:1.45;flex:1}
+  .payout .msg b{font-weight:700}
+  .payout .tag{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:4px}
+  .ok{border-color:#9fd8bb}.ok .ico{background:var(--greenbg);color:var(--green)}.ok .tag{color:var(--green)}
+  .wait{border-color:#f3cf92}.wait .ico{background:var(--amberbg);color:var(--amber)}.wait .tag{color:var(--amber)}
+  .none{border-color:#cfd6df}.none .ico{background:var(--greybg);color:var(--grey)}.none .tag{color:var(--grey)}
+  .neg{border-color:#f2a7b8}.neg .ico{background:var(--redbg);color:var(--red)}.neg .tag{color:var(--red)}
+  .btn{background:var(--brand);color:#fff;border-radius:var(--borderRadius);padding:9px 14px;font-size:13px;font-weight:600;white-space:nowrap}
+  .btn.ghost{background:#fff;color:var(--brand);border:1px solid var(--line)}
+  .steps{display:flex;gap:8px;font-size:12px;margin-top:8px}
+  .steps span{background:var(--greybg);border-radius:12px;padding:3px 10px;color:var(--grey)}
+  .steps span.d{background:var(--redbg);color:var(--red)}
+  /* balance */
+  .split{display:flex;gap:28px;margin-top:4px}
+  .split div{font-size:13px;color:var(--muted)}
+  .split b{display:block;font-size:22px;color:var(--ink)}
+  .split b.r{color:var(--red)}
+  /* activity */
+  .row{display:flex;justify-content:space-between;font-size:14px;padding:9px 0;border-bottom:1px solid #f0f2f5}
+  .row:last-child{border:0}
+  .row .s{color:var(--muted);font-size:12px}
+  .row.hl{background:var(--redbg);margin:0 -20px;padding:9px 20px}
+  .chart{flex:1;background:linear-gradient(180deg,#e7f1fc 0,#fff 100%);border-radius:6px;position:relative}
+  .chart svg{position:absolute;inset:0;width:100%;height:100%}
+  .dim{opacity:.85}
+  .rk{color:var(--brand);margin-right:4px}
+  .note{width:1440px;background:#fff;border-radius:8px;padding:28px 32px;box-shadow:0 2px 12px rgba(0,0,0,.12);font-size:15px;line-height:1.55}
+  .note h2{font-size:22px;margin-bottom:12px}
+  .note h3{font-size:16px;margin:18px 0 8px}
+  .note ul{padding-left:20px}
+  .note table{border-collapse:collapse;width:100%;font-size:13px;margin-top:8px}
+  .note th,.note td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+  .note th{background:#f6f8fa;color:var(--muted);font-weight:600}
+  .note td.n{text-align:center}
+  .moved{font-size:11px;color:#a3acb9;font-weight:400}
+</style>
+</head>
+<body>
+<div class="label" style="font-size:14px;font-weight:400;color:#6d6e78">Stripe Home · payday frames · styled with Stripe Elements Appearance API theme "stripe": colorPrimary #0570de, colorText #30313d, colorDanger #df1b41, colorBackground #ffffff, fontFamily Ideal Sans/system-ui, spacingUnit 2px, borderRadius 4px</div>
+<section class="note" id="why">
+ <h2>Why Home changes: what hides the next payout today</h2>
+ <p>On the current Home (11 panels, Nov 2026), Maria cannot see her next payout:</p>
+ <ul>
+  <li><b>No panel shows it.</b> None of the 11 panels shows the payout amount or its arrival date.</li>
+  <li><b>Balance (position 9, BalanceSummaryCard) shows only the total USD balance</b>, with no pending/available split and no payout.</li>
+  <li><b>It sits below the fold.</b> On a 1440×900 screen she has to scroll to panel 9 before she can start looking.</li>
+  <li><b>It takes 4 clicks:</b> "View balances" &gt; Payouts tab &gt; "Upcoming" filter &gt; open the row. Amount and arrival date only appear together after click 4.</li>
+  <li><b>Pending only:</b> Balance shows $0.00, with no hint of the pending amount or when it becomes available, so the money looks gone.</li>
+  <li><b>After a refund:</b> the balance turns red with a minus sign, with no reason, no sign the payout was canceled ("Canceled" is only in the Payouts list), and no word on when payouts restart.</li>
+  <li><b>The top of Home goes to other things:</b> Setup guide banner, Today chart and Recommendations.</li>
+ </ul>
+ <h3>All 11 panels ranked by payday need (plus the new payout card)</h3>
+ <p>Each panel scored 0 (no help), 1 (partial or needs clicks) or 2 (answers it on Home) on three questions (how much, when, is anything wrong) in each of the 4 payout states. Max 24.</p>
+ <table>
+  <tbody><tr><th>Rank</th><th>Panel</th><th>Component</th><th>Grid</th><th>Was</th><th>payout_scheduled</th><th>pending_only</th><th>no_payout</th><th>negative_after_refund</th><th>Total</th><th>Why</th></tr>
+  <tr><td class="n">1</td><td>Payout status (new)</td><td>PayoutStatusCard</td><td>12×2</td><td>new</td><td class="n">6</td><td class="n">6</td><td class="n">6</td><td class="n">6</td><td class="n">24</td><td>Shows the owner message for each state: how much, when, what's wrong and what happens next.</td></tr>
+  <tr><td class="n">2</td><td>Balance</td><td>BalanceSummaryCard</td><td>6×2</td><td>9</td><td class="n">1</td><td class="n">0</td><td class="n">1</td><td class="n">2</td><td class="n">4</td><td>Only panel tied to her money and the only route to Payouts. Now split into Available and Pending.</td></tr>
+  <tr><td class="n">3</td><td>Recent activity</td><td>ActivityFeed</td><td>12×4</td><td>11</td><td class="n">0</td><td class="n">1</td><td class="n">0</td><td class="n">1</td><td class="n">2</td><td>Lists the catering refund that caused the negative balance, and the charges behind pending money.</td></tr>
+  <tr><td class="n">4</td><td>Disputes</td><td>MetricCard</td><td>6×2</td><td>10</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">1</td><td class="n">1</td><td>Other "is anything wrong" signal: an open dispute pulls money from the balance. Tied with Net volume; placed beside Balance to fill the 6×2 row.</td></tr>
+  <tr><td class="n">5</td><td>Net volume</td><td>MetricCard</td><td>6×2</td><td>5</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">1</td><td class="n">1</td><td>Shows the effect of refunds and fees, but not the payout.</td></tr>
+  <tr><td class="n">6</td><td>Today</td><td>VolumeChartCard</td><td>12×3</td><td>2</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>Useful sales view, not a payday answer. Ranked above other zeros as the most used daily view.</td></tr>
+  <tr><td class="n">7</td><td>Gross volume</td><td>MetricCard</td><td>6×2</td><td>4</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>Before refunds and fees, so it can't explain the payout.</td></tr>
+  <tr><td class="n">8</td><td>Successful payments</td><td>MetricCard</td><td>6×2</td><td>6</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>Count only.</td></tr>
+  <tr><td class="n">9</td><td>Failed payments</td><td>MetricCard</td><td>6×2</td><td>8</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>Count only; failed charges never reach the balance.</td></tr>
+  <tr><td class="n">10</td><td>New customers</td><td>MetricCard</td><td>6×2</td><td>7</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>Not about money owed to her.</td></tr>
+  <tr><td class="n">11</td><td>Recommendations</td><td>PromoCard</td><td>6×2</td><td>3</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>Promotion; moved from the top to the bottom.</td></tr>
+  <tr><td class="n">12</td><td>Setup guide banner</td><td>SetupGuideBanner</td><td>12×1</td><td>1</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>Onboarding; moved from the very top to the bottom, still dismissible.</td></tr>
+ </tbody></table>
+ <p style="margin-top:12px;color:var(--muted)">Each frame below shows all 11 existing panels plus the new card, in this order, with its rank (#) and old position. The dashed pink line is the 900px fold.</p>
+</section>
+<div id="root">
+  <section>
+   <div class="label">1 · payout_scheduled<small>Payout on its way · 1440 wide · dashed line = fold at 900px</small></div>
+   <div class="frame" id="payout_scheduled">
+    <div class="fold"><span>Fold (1440×900)</span></div>
+    <nav><div class="acct">Maria's Bakery</div>
+      <div class="i on">Home</div><div class="i">Balances</div><div class="i">Transactions</div><div class="i">Customers</div><div class="i">Product catalogue</div><div class="i">Payments</div><div class="i">Billing</div><div class="i">Reporting</div></nav>
+    <main>
+     <div class="top"><div class="search">Search</div><div class="sub">Test mode</div></div>
+     <h1>Home</h1>
+     <div class="grid">
+      <!-- NEW: payout panel -->
+      <div class="card w12 h2 payout ok">
+        <div class="ico">→</div>
+        <div class="msg"><div class="tag">Payout on its way <span class="moved">· PayoutStatusCard (new) · Rank 1</span></div><b>$4,200.00</b> is on its way to your bank account ending 6621. Expected to arrive <span class="tok">{arrival_date}</span>.</div>
+        <div class="btn ghost">View payout</div>
+      </div>
+      <!-- Balance (was 9) + Disputes (was 10) -->
+      <div class="card w6 h2"><div class="ct"><span><b class="rk">#2</b> Balance</span><em>BalanceSummaryCard · was position 9</em></div>
+        <div class="split"><div>Available<b>$312.40</b></div><div>Pending<b><span class="tok">{pending}</span></b></div></div>
+        <div class="sub">Next payout: $4,200.00 · in transit</div><a class="lk">View balances</a></div>
+      <div class="card w6 h2"><div class="ct"><span><b class="rk">#4</b> Disputes</span><em>MetricCard · was position 10 · sits beside Balance to fill the 6×2 row</em></div>
+        <div class="big">0</div><div class="sub">No disputes need a response</div><a class="lk">Disputes</a></div>
+      <!-- Recent activity (was 11) -->
+      <div class="card w12 h4"><div class="ct"><span><b class="rk">#3</b> Recent activity</span><em>ActivityFeed · was position 11</em></div>
+  
+  <div class="row"><div>Birthday cake pickup<div class="s">Charge · succeeded</div></div><div>$102.18</div></div>
+  <div class="row"><div>Morning coffee and croissant<div class="s">Charge · succeeded</div></div><div>$165.48</div></div>
+  <div class="row"><div>Catering order, office breakfast<div class="s">Charge · succeeded</div></div><div>$198.23</div></div>
+  <div class="row"><div>Refund · item sold out<div class="s">Refund</div></div><div>-$95.93</div></div>
+  <div class="row"><div>Morning coffee and croissant<div class="s">Charge · succeeded</div></div><div>$56.16</div></div></div>
+      <!-- below: Net volume, Today, other metrics -->
+      <div class="card w6 h2 dim"><div class="ct"><span><b class="rk">#5</b> Net volume</span><em>MetricCard · was 5</em></div><div class="big">$<span class="tok">{net}</span></div><a class="lk">Net volume report</a></div>
+      <div class="card w6 h2 dim"><div class="ct"><span><b class="rk">#7</b> Gross volume</span><em>MetricCard · was 4</em></div><div class="big">$<span class="tok">{gross}</span></div><a class="lk">Gross volume report</a></div>
+      <div class="card w12 h3 dim"><div class="ct"><span><b class="rk">#6</b> Today</span><em>VolumeChartCard · was position 2</em></div>
+        <div class="chart"><svg viewBox="0 0 100 40" preserveAspectRatio="none"><polyline fill="none" stroke="#0570de" stroke-width=".6" points="0,34 10,30 20,31 30,24 40,26 50,18 60,20 70,14 80,16 90,10 100,12"></polyline><polyline fill="none" stroke="#c1c9d2" stroke-width=".5" stroke-dasharray="1 1" points="0,36 10,33 20,32 30,29 40,30 50,25 60,26 70,22 80,24 90,20 100,21"></polyline></svg></div></div>
+      <div class="card w6 h2 dim"><div class="ct"><span><b class="rk">#8</b> Successful payments</span><em>MetricCard · was 6</em></div><div class="big"><span class="tok">{count}</span></div><a class="lk">Payments</a></div>
+      <div class="card w6 h2 dim"><div class="ct"><span><b class="rk">#9</b> Failed payments</span><em>MetricCard · was 8</em></div><div class="big"><span class="tok">{count}</span></div><a class="lk">Payments</a></div>
+      <div class="card w6 h2 dim"><div class="ct"><span><b class="rk">#10</b> New customers</span><em>MetricCard · was 7</em></div><div class="big"><span class="tok">{count}</span></div><a class="lk">Customers</a></div>
+      <div class="card w6 h2 dim"><div class="ct"><span><b class="rk">#11</b> Recommendations</span><em>PromoCard · was position 3</em></div><div class="sub">Try Stripe Tax</div><a class="lk">Learn more</a></div>
+      <div class="card w12 h1 dim" style="flex-direction:row;justify-content:space-between;align-items:center"><div><div class="ct"><span><b class="rk">#12</b> Setup guide</span><em>SetupGuideBanner · was position 1</em></div><div class="sub">Add your business logo to receipts</div></div><div class="sub">×</div></div>
+     </div>
+    </main>
+   </div>
+  </section>
+  <section>
+   <div class="label">2 · pending_only<small>Money only pending · 1440 wide · dashed line = fold at 900px</small></div>
+   <div class="frame" id="pending_only">
+    <div class="fold"><span>Fold (1440×900)</span></div>
+    <nav><div class="acct">Maria's Bakery</div>
+      <div class="i on">Home</div><div class="i">Balances</div><div class="i">Transactions</div><div class="i">Customers</div><div class="i">Product catalogue</div><div class="i">Payments</div><div class="i">Billing</div><div class="i">Reporting</div></nav>
+    <main>
+     <div class="top"><div class="search">Search</div><div class="sub">Test mode</div></div>
+     <h1>Home</h1>
+     <div class="grid">
+      <!-- NEW: payout panel -->
+      <div class="card w12 h2 payout wait">
+        <div class="ico">◷</div>
+        <div class="msg"><div class="tag">Money on the way to your balance <span class="moved">· PayoutStatusCard (new) · Rank 1</span></div>You have <b><span class="tok">{pending_amount}</span></b> coming in. It becomes available on <span class="tok">{available_on}</span> and then gets paid out to your bank. Nothing is missing.</div>
+        <div class="btn ghost">See pending</div>
+      </div>
+      <!-- Balance (was 9) + Disputes (was 10) -->
+      <div class="card w6 h2"><div class="ct"><span><b class="rk">#2</b> Balance</span><em>BalanceSummaryCard · was position 9</em></div>
+        <div class="split"><div>Available<b>$0.00</b></div><div>Pending<b><span class="tok">{pending_amount}</span></b></div></div>
+        <div class="sub">Becomes available <span class="tok">{available_on}</span></div><a class="lk">View balances</a></div>
+      <div class="card w6 h2"><div class="ct"><span><b class="rk">#4</b> Disputes</span><em>MetricCard · was position 10 · sits beside Balance to fill the 6×2 row</em></div>
+        <div class="big">0</div><div class="sub">No disputes need a response</div><a class="lk">Disputes</a></div>
+      <!-- Recent activity (was 11) -->
+      <div class="card w12 h4"><div class="ct"><span><b class="rk">#3</b> Recent activity</span><em>ActivityFeed · was position 11</em></div>
+  
+  <div class="row"><div>Birthday cake pickup<div class="s">Charge · succeeded</div></div><div>$102.18</div></div>
+  <div class="row"><div>Morning coffee and croissant<div class="s">Charge · succeeded</div></div><div>$165.48</div></div>
+  <div class="row"><div>Catering order, office breakfast<div class="s">Charge · succeeded</div></div><div>$198.23</div></div>
+  <div class="row"><div>Refund · item sold out<div class="s">Refund</div></div><div>-$95.93</div></div>
+  <div class="row"><div>Morning coffee and croissant<div class="s">Charge · succeeded</div></div><div>$56.16</div></div></div>
+      <!-- below: Net volume, Today, other metrics -->
+      <div class="card w6 h2 dim"><div class="ct"><span><b class="rk">#5</b> Net volume</span><em>MetricCard · was 5</em></div><div class="big">$<span class="tok">{net}</span></div><a class="lk">Net volume report</a></div>
+      <div class="card w6 h2 dim"><div class="ct"><span><b class="rk">#7</b> Gross volume</span><em>MetricCard · was 4</em></div><div class="big">$<span class="tok">{gross}</span></div><a class="lk">Gross volume report</a></div>
+      <div class="card w12 h3 dim"><div class="ct"><span><b class="rk">#6</b> Today</span><em>VolumeChartCard · was position 2</em></div>
+        <div class="chart"><svg viewBox="0 0 100 40" preserveAspectRatio="none"><polyline fill="none" stroke="#0570de" stroke-width=".6" points="0,34 10,30 20,31 30,24 40,26 50,18 60,20 70,14 80,16 90,10 100,12"></polyline><polyline fill="none" stroke="#c1c9d2" stroke-width=".5" stroke-dasharray="1 1" points="0,36 10,33 20,32 30,29 40,30 50,25 60,26 70,22 80,24 90,20 100,21"></polyline></svg></div></div>
+      <div class="card w6 h2 dim"><div class="ct"><span><b class="rk">#8</b> Successful payments</span><em>MetricCard · was 6</em></div><div class="big"><span class="tok">{count}</span></div><a class="lk">Payments</a></div>
+      <div class="card w6 h2 dim"><div class="ct"><span><b class="rk">#9</b> Failed payments</span><em>MetricCard · was 8</em></div><div class="big"><span class="tok">{count}</span></div><a class="lk">Payments</a></div>
+      <div class="card w6 h2 dim"><div class="ct"><span><b class="rk">#10</b> New customers</span><em>MetricCard · was 7</em></div><div class="big"><span class="tok">{count}</span></div><a class="lk">Customers</a></div>
+      <div class="card w6 h2 dim"><div class="ct"><span><b class="rk">#11</b> Recommendations</span><em>PromoCard · was position 3</em></div><div class="sub">Try Stripe Tax</div><a class="lk">Learn more</a></div>
+      <div class="card w12 h1 dim" style="flex-direction:row;justify-content:space-between;align-items:center"><div><div class="ct"><span><b class="rk">#12</b> Setup guide</span><em>SetupGuideBanner · was position 1</em></div><div class="sub">Add your business logo to receipts</div></div><div class="sub">×</div></div>
+     </div>
+    </main>
+   </div>
+  </section>
+  <section>
+   <div class="label">3 · no_payout<small>Nothing scheduled (example reason: manual schedule) · 1440 wide · dashed line = fold at 900px</small></div>
+   <div class="frame" id="no_payout">
+    <div class="fold"><span>Fold (1440×900)</span></div>
+    <nav><div class="acct">Maria's Bakery</div>
+      <div class="i on">Home</div><div class="i">Balances</div><div class="i">Transactions</div><div class="i">Customers</div><div class="i">Product catalogue</div><div class="i">Payments</div><div class="i">Billing</div><div class="i">Reporting</div></nav>
+    <main>
+     <div class="top"><div class="search">Search</div><div class="sub">Test mode</div></div>
+     <h1>Home</h1>
+     <div class="grid">
+      <!-- NEW: payout panel -->
+      <div class="card w12 h2 payout none">
+        <div class="ico">—</div>
+        <div class="msg"><div class="tag">No payout scheduled <span class="moved">· PayoutStatusCard (new) · Rank 1</span></div>No payout is scheduled right now because <b>your payout schedule is set to manual</b>. You can send a payout yourself from Balances.</div>
+        <div class="btn">Send a payout</div>
+      </div>
+      <!-- Balance (was 9) + Disputes (was 10) -->
+      <div class="card w6 h2"><div class="ct"><span><b class="rk">#2</b> Balance</span><em>BalanceSummaryCard · was position 9</em></div>
+        <div class="split"><div>Available<b><span class="tok">{available}</span></b></div><div>Pending<b>$0.00</b></div></div>
+        <div class="sub">Payout schedule: manual</div><a class="lk">View balances</a></div>
+      <div class="card w6 h2"><div class="ct"><span><b class="rk">#4</b> Disputes</span><em>MetricCard · was position 10 · sits beside Balance to fill the 6×2 row</em></div>
+        <div class="big">0</div><div class="sub">No disputes need a response</div><a class="lk">Disputes</a></div>
+      <!-- Recent activity (was 11) -->
+      <div class="card w12 h4"><div class="ct"><span><b class="rk">#3</b> Recent activity</span><em>ActivityFeed · was position 11</em></div>
+  
+  <div class="row"><div>Birthday cake pickup<div class="s">Charge · succeeded</div></div><div>$102.18</div></div>
+  <div class="row"><div>Morning coffee and croissant<div class="s">Charge · succeeded</div></div><div>$165.48</div></div>
+  <div class="row"><div>Catering order, office breakfast<div class="s">Charge · succeeded</div></div><div>$198.23</div></div>
+  <div class="row"><div>Refund · item sold out<div class="s">Refund</div></div><div>-$95.93</div></div>
+  <div class="row"><div>Morning coffee and croissant<div class="s">Charge · succeeded</div></div><div>$56.16</div></div></div>
+      <!-- below: Net volume, Today, other metrics -->
+      <div class="card w6 h2 dim"><div class="ct"><span><b class="rk">#5</b> Net volume</span><em>MetricCard · was 5</em></div><div class="big">$<span class="tok">{net}</span></div><a class="lk">Net volume report</a></div>
+      <div class="card w6 h2 dim"><div class="ct"><span><b class="rk">#7</b> Gross volume</span><em>MetricCard · was 4</em></div><div class="big">$<span class="tok">{gross}</span></div><a class="lk">Gross volume report</a></div>
+      <div class="card w12 h3 dim"><div class="ct"><span><b class="rk">#6</b> Today</span><em>VolumeChartCard · was position 2</em></div>
+        <div class="chart"><svg viewBox="0 0 100 40" preserveAspectRatio="none"><polyline fill="none" stroke="#0570de" stroke-width=".6" points="0,34 10,30 20,31 30,24 40,26 50,18 60,20 70,14 80,16 90,10 100,12"></polyline><polyline fill="none" stroke="#c1c9d2" stroke-width=".5" stroke-dasharray="1 1" points="0,36 10,33 20,32 30,29 40,30 50,25 60,26 70,22 80,24 90,20 100,21"></polyline></svg></div></div>
+      <div class="card w6 h2 dim"><div class="ct"><span><b class="rk">#8</b> Successful payments</span><em>MetricCard · was 6</em></div><div class="big"><span class="tok">{count}</span></div><a class="lk">Payments</a></div>
+      <div class="card w6 h2 dim"><div class="ct"><span><b class="rk">#9</b> Failed payments</span><em>MetricCard · was 8</em></div><div class="big"><span class="tok">{count}</span></div><a class="lk">Payments</a></div>
+      <div class="card w6 h2 dim"><div class="ct"><span><b class="rk">#10</b> New customers</span><em>MetricCard · was 7</em></div><div class="big"><span class="tok">{count}</span></div><a class="lk">Customers</a></div>
+      <div class="card w6 h2 dim"><div class="ct"><span><b class="rk">#11</b> Recommendations</span><em>PromoCard · was position 3</em></div><div class="sub">Try Stripe Tax</div><a class="lk">Learn more</a></div>
+      <div class="card w12 h1 dim" style="flex-direction:row;justify-content:space-between;align-items:center"><div><div class="ct"><span><b class="rk">#12</b> Setup guide</span><em>SetupGuideBanner · was position 1</em></div><div class="sub">Add your business logo to receipts</div></div><div class="sub">×</div></div>
+     </div>
+    </main>
+   </div>
+  </section>
+  <section>
+   <div class="label">4 · negative_after_refund<small>Morning after the catering refund · 1440 wide · dashed line = fold at 900px</small></div>
+   <div class="frame" id="negative_after_refund">
+    <div class="fold"><span>Fold (1440×900)</span></div>
+    <nav><div class="acct">Maria's Bakery</div>
+      <div class="i on">Home</div><div class="i">Balances</div><div class="i">Transactions</div><div class="i">Customers</div><div class="i">Product catalogue</div><div class="i">Payments</div><div class="i">Billing</div><div class="i">Reporting</div></nav>
+    <main>
+     <div class="top"><div class="search">Search</div><div class="sub">Test mode</div></div>
+     <h1>Home</h1>
+     <div class="grid">
+      <!-- NEW: payout panel -->
+      <div class="card w12 h2 payout neg">
+        <div class="ico">!</div>
+        <div class="msg"><div class="tag">Balance below $0 <span class="moved">· PayoutStatusCard (new) · Rank 1</span></div>Your balance is <b>-$1,874.55</b> because the catering refund was larger than the money in your balance. We canceled your next payout to cover it. Payouts restart automatically once new sales bring your balance above $0. You don't need to do anything.
+   <div class="steps"><span class="d">Catering refund</span><span class="d">Payout canceled</span><span>New sales</span><span>Payouts restart above $0</span></div></div>
+        <div class="btn ghost">See the refund</div>
+      </div>
+      <!-- Balance (was 9) + Disputes (was 10) -->
+      <div class="card w6 h2"><div class="ct"><span><b class="rk">#2</b> Balance</span><em>BalanceSummaryCard · was position 9</em></div>
+        <div class="split"><div>Available<b><span style="color:var(--red)">-$1,874.55</span></b></div><div>Pending<b><span class="tok">{pending}</span></b></div></div>
+        <div class="sub">Next payout canceled to cover the refund</div><a class="lk">View balances</a></div>
+      <div class="card w6 h2"><div class="ct"><span><b class="rk">#4</b> Disputes</span><em>MetricCard · was position 10 · sits beside Balance to fill the 6×2 row</em></div>
+        <div class="big">0</div><div class="sub">No disputes need a response</div><a class="lk">Disputes</a></div>
+      <!-- Recent activity (was 11) -->
+      <div class="card w12 h4"><div class="ct"><span><b class="rk">#3</b> Recent activity</span><em>ActivityFeed · was position 11</em></div>
+  <div class="row hl"><div>Refund · Catering order, office breakfast<div class="s">Caused the negative balance</div></div><div style="color:var(--red);font-weight:600"><span class="tok">{refund_amount}</span></div></div>
+          <div class="row hl"><div>Payout canceled · bank ••••6621<div class="s">Funds returned to Stripe balance</div></div><div style="color:var(--red)">Canceled</div></div>
+  <div class="row"><div>Birthday cake pickup<div class="s">Charge · succeeded</div></div><div>$102.18</div></div>
+  <div class="row"><div>Morning coffee and croissant<div class="s">Charge · succeeded</div></div><div>$165.48</div></div>
+  <div class="row"><div>Catering order, office breakfast<div class="s">Charge · succeeded</div></div><div>$198.23</div></div>
+  </div>
+      <!-- below: Net volume, Today, other metrics -->
+      <div class="card w6 h2 dim"><div class="ct"><span><b class="rk">#5</b> Net volume</span><em>MetricCard · was 5</em></div><div class="big">$<span class="tok">{net}</span></div><a class="lk">Net volume report</a></div>
+      <div class="card w6 h2 dim"><div class="ct"><span><b class="rk">#7</b> Gross volume</span><em>MetricCard · was 4</em></div><div class="big">$<span class="tok">{gross}</span></div><a class="lk">Gross volume report</a></div>
+      <div class="card w12 h3 dim"><div class="ct"><span><b class="rk">#6</b> Today</span><em>VolumeChartCard · was position 2</em></div>
+        <div class="chart"><svg viewBox="0 0 100 40" preserveAspectRatio="none"><polyline fill="none" stroke="#0570de" stroke-width=".6" points="0,34 10,30 20,31 30,24 40,26 50,18 60,20 70,14 80,16 90,10 100,12"></polyline><polyline fill="none" stroke="#c1c9d2" stroke-width=".5" stroke-dasharray="1 1" points="0,36 10,33 20,32 30,29 40,30 50,25 60,26 70,22 80,24 90,20 100,21"></polyline></svg></div></div>
+      <div class="card w6 h2 dim"><div class="ct"><span><b class="rk">#8</b> Successful payments</span><em>MetricCard · was 6</em></div><div class="big"><span class="tok">{count}</span></div><a class="lk">Payments</a></div>
+      <div class="card w6 h2 dim"><div class="ct"><span><b class="rk">#9</b> Failed payments</span><em>MetricCard · was 8</em></div><div class="big"><span class="tok">{count}</span></div><a class="lk">Payments</a></div>
+      <div class="card w6 h2 dim"><div class="ct"><span><b class="rk">#10</b> New customers</span><em>MetricCard · was 7</em></div><div class="big"><span class="tok">{count}</span></div><a class="lk">Customers</a></div>
+      <div class="card w6 h2 dim"><div class="ct"><span><b class="rk">#11</b> Recommendations</span><em>PromoCard · was position 3</em></div><div class="sub">Try Stripe Tax</div><a class="lk">Learn more</a></div>
+      <div class="card w12 h1 dim" style="flex-direction:row;justify-content:space-between;align-items:center"><div><div class="ct"><span><b class="rk">#12</b> Setup guide</span><em>SetupGuideBanner · was position 1</em></div><div class="sub">Add your business logo to receipts</div></div><div class="sub">×</div></div>
+     </div>
+    </main>
+   </div>
+  </section></div>
+
+
+
+</body></html>
