@@ -15,9 +15,24 @@ Payout status for Stripe Dashboard Home, built from Maria's Bakery test-mode dat
 | `tests/` | Tests for every state and overlap, with CSV fixtures. |
 | `data/` | Maria's balance transactions (test mode). |
 
+## Home (Next.js on Vercel)
+
+`app/page.tsx` renders Dashboard Home with the payout status card first, then Balance (Available/Pending) beside Disputes, Recent activity, and the other panels. It reads the transactions and `docs/payout-states.md` at runtime through `lib/payoutState.ts`.
+
+- `/` shows the held-out data (17 to 30 Nov 2026) as of the latest day. `/?as_of=2026-11-20` shows any day; the strip at the top links every day.
+- `/?data=sep-nov` shows the original Sep to Nov file.
+- `/api/payout-state?as_of=2026-11-30` returns the contract JSON.
+
+```
+npm install
+npm run dev        # http://localhost:3000
+npm run build
+npm run parity     # TypeScript and Python services must match
+```
+
 ## The payout state service
 
-`get_payout_state(csv_path, account_id, as_of)` reads the balance transactions and returns one payout state in the nine-field contract shape: `account_id`, `as_of`, `state_id`, `message`, `amount`, `currency`, `date`, `reason`, `source_transaction_ids`.
+`get_payout_state(csv_paths, account_id, as_of)` reads the balance transactions and returns the Payout State Service Response Contract (`specs/001-payout-status/contracts/payout-state.schema.json`): `account_id`, `state`, `available_balance`, `pending_balance`, `next_payout_id`, `next_payout_amount`, `next_payout_arrival_date`, `pending_available_on`, `message`. Amounts are integer USD cents.
 
 - States are checked in order, first match wins: `negative_after_refund`, `payout_scheduled`, `pending_only`, `no_payout`.
 - Every value is worked out from the transactions at runtime. Nothing is hard-coded per account or case.
@@ -27,7 +42,7 @@ Payout status for Stripe Dashboard Home, built from Maria's Bakery test-mode dat
 Run it (Python 3.10+, no installs needed):
 
 ```
-python -m payout_state --csv "data/Maria's Bakery Balance Transactions, Sep-Nov 2026 (Stripe test mode).csv" --account acct_test_maria_bakery --as-of 2026-11-16
+python -m payout_state --account acct_test_maria_bakery --as-of 2026-11-30 --csv data/maria_bakery_balance_transactions_heldout_nov_2026.csv
 ```
 
 Run the tests:
@@ -36,9 +51,16 @@ Run the tests:
 python -m unittest -v
 ```
 
-## Result on Maria's file (as of 2026-11-16)
+## Results on the held-out data (17 to 30 Nov 2026)
 
-`no_payout`, reason `unknown`, amount `6412.39` available, worked out from `txn_370` (her latest row). Her balance is above $0 and nothing is scheduled, but the transactions alone can't say why (manual schedule or payouts paused need payout settings). So the service returns "unknown" and no message rather than guessing.
+| Days | State |
+|---|---|
+| 20, 21, 22 Nov | `negative_after_refund` (wedding cake refund, two payouts canceled) |
+| 26, 27 Nov | `pending_only` ($145.05 becomes available Fri 27 Nov) |
+| 30 Nov | `payout_scheduled` ($40.00, po_0090, arrives Mon 30 Nov) |
+| 17 to 19, 23 to 25, 28, 29 Nov | Money available and pending, no payout yet. Outside the contract's four states (see the plan) |
+
+`no_payout` as the contract defines it (nothing pending) never occurs in the held-out data.
 
 ## Known data gaps
 

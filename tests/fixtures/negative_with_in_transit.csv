@@ -1,3 +1,4 @@
 balance_transaction_id,account_id,created_at,available_on,type,source_id,amount,fee,net,currency,balance_status,payout_id,payout_status,payout_arrival_date,payout_failure_reason,running_available_balance,running_pending_balance,description
 txn_1,acct_test_fixture,2026-11-10,2026-11-12,payout,src_1,-950.00,0.0,-950.00,usd,available,po_1,in_transit,2026-11-18,,500.00,0,Automatic payout to bank ****6621
 txn_2,acct_test_fixture,2026-11-13,2026-11-13,refund,src_2,-731.20,0.0,-731.20,usd,available,,,,,-231.20,0,Refund of catering order - wedding cake
+txn_3,acct_test_fixture,2026-11-13,2026-11-13,payout,src_3,-300.00,0.0,-300.00,usd,available,po_3,canceled,2026-11-15,negative_balance_after_refund,-231.20,0,Daily automatic payout

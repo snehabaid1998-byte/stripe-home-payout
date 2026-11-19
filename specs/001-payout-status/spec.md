@@ -19,7 +19,7 @@ Stories are ordered by support risk. This is not the order the service checks st
 **Detection rule:** latest available balance < 0.
 
 **Acceptance scenarios**
-1. **Given** Maria's latest available balance is -$1,874.55 after a catering refund, **when** she opens Home, **then** the payout card shows: "Your balance is -$1,874.55 because the catering refund was larger than the money in your balance. We canceled your next payout to cover it. Payouts restart automatically once new sales bring your balance above $0. You don't need to do anything."
+1. **Given** Maria's latest available balance is -$1,874.55 after a catering refund, **when** she opens Home, **then** the payout card shows the `negative_after_refund` owner message from `docs/payout-states.md`, with {balance} = -$1,874.55.
 2. **Given** the balance is negative **and** an older payout still shows as in transit, **when** she opens Home, **then** she sees the negative-balance message, not the in-transit one.
 
 **What Home shows:** PayoutStatusCard in the red state with the message and the steps Catering refund, Payout canceled, New sales, Payouts restart above $0. Balance shows Available in red, with "Next payout canceled to cover the refund". Recent activity highlights the refund and the canceled payout at the top.
@@ -31,7 +31,7 @@ Stories are ordered by support risk. This is not the order the service checks st
 **Detection rule:** available = 0, pending > 0, and no payout with status pending or in_transit.
 
 **Acceptance scenarios**
-1. **Given** available is $0.00 and pending is above $0, **when** she opens Home, **then** the card shows "You have {pending_amount} coming in. It becomes available on {available_on} and then gets paid out to your bank. Nothing is missing."
+1. **Given** available is $0.00 and pending is above $0, **when** she opens Home, **then** the card shows the `pending_only` owner message from `docs/payout-states.md`, with the pending amount and the date it becomes available.
 2. **Given** some pending rows have an available_on date earlier than today, **then** those dates are ignored when choosing {available_on}.
 
 **What Home shows:** amber PayoutStatusCard. Balance shows Available $0.00 and the Pending amount side by side.
@@ -43,7 +43,7 @@ Stories are ordered by support risk. This is not the order the service checks st
 **Detection rule:** a payout with status pending or in_transit.
 
 **Acceptance scenarios**
-1. **Given** a $4,200.00 payout is in transit to the bank account ending 6621, **when** she opens Home, **then** the card shows "$4,200.00 is on its way to your bank account ending 6621. Expected to arrive {arrival_date}." with zero clicks.
+1. **Given** a $4,200.00 payout is in transit to the bank account ending 6621, **when** she opens Home, **then** the card shows the `payout_scheduled` owner message from `docs/payout-states.md`, with {amount} = $4,200.00, {last4} = 6621 and the arrival date, with zero clicks.
 2. **Given** a payout is in transit **and** money is also pending, **then** she sees the payout message.
 
 **What Home shows:** green PayoutStatusCard. Balance shows Available and Pending, with "Next payout: {amount} · in transit".
@@ -55,7 +55,7 @@ Stories are ordered by support risk. This is not the order the service checks st
 **Detection rule:** none of the other states match.
 
 **Acceptance scenarios**
-1. **Given** available, pending and payouts are all $0, **then** the card says "No payout is scheduled right now because your available balance is $0. Your next payout will be scheduled after your next sale settles."
+1. **Given** available, pending and payouts are all $0, **then** the card shows the `no_payout` owner message from `docs/payout-states.md`, with the "available balance is $0" reason and its next step.
 2. **Given** the reason can't be worked out from the transactions, **then** the service returns reason "unknown" and no message, rather than guessing.
 
 **Reasons (from `docs/payout-states.md`):** available balance is $0; payout schedule set to manual; payouts paused; bank account needs updating. Each has a next step.
@@ -63,6 +63,10 @@ Stories are ordered by support risk. This is not the order the service checks st
 ## Home layout
 
 Top to bottom on the 12-column grid: PayoutStatusCard (new, 12×2), Balance (6×2) beside Disputes (6×2), Recent activity (12×4), then Net volume, Gross volume, Today, Successful payments, Failed payments, New customers, Recommendations, Setup guide banner.
+
+## Message wording
+
+Owner message wording lives only in `docs/payout-states.md`. This spec refers to each message by its state_id and says which values fill it. It never copies the text, so a wording change is made once.
 
 ## Functional requirements
 

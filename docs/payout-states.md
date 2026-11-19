@@ -18,10 +18,10 @@ Every owner message answers three questions:
 
 | state_id | Moment | How to detect it (Stripe API) | What Home shows today | Owner message |
 |---|---|---|---|---|
-| `payout_scheduled` | Payout on its way | A payout exists with `status` = `pending` or `in_transit` (GET /v1/payouts) | "$312.40 available". The $4,200.00 payout and its arrival date are only visible 4 clicks deep, inside the payout row | "{amount} is on its way to your bank account ending {last4}. Expected to arrive {arrival_date}." |
+| `payout_scheduled` | Payout on its way | A payout exists with `status` = `pending` or `in_transit` (GET /v1/payouts) | "$312.40 available". The $4,200.00 payout and its arrival date are only visible 4 clicks deep, inside the payout row | "{amount} is on its way to your bank account. Expected to arrive {arrival_date}." |
 | `pending_only` | Money only pending | `balance.available` = 0, `balance.pending` > 0, and no payout with `status` = `pending` or `in_transit` | "$0.00 available" and "No upcoming payouts". The money looks gone | "You have {pending_amount} coming in. It becomes available on {available_on} and then gets paid out to your bank. Nothing is missing." |
 | `no_payout` | Nothing scheduled | No payout with `status` = `pending` or `in_transit`, `balance.pending` = 0, and `balance.available` >= 0 | The available figure only, and "No upcoming payouts" with no reason | "No payout is scheduled right now because {reason}. {next_step}" |
-| `negative_after_refund` | Morning after the catering refund | `balance.available` < 0 after a refund, and the most recent payout has `status` = `canceled` | "-$1,874.55" in grey with no label, and a payout row that reads "Canceled" | "Your balance is {balance} because the catering refund was larger than the money in your balance. We canceled your next payout to cover it. Payouts restart automatically once new sales bring your balance above $0. You don't need to do anything." |
+| `negative_after_refund` | Morning after the catering refund | `balance.available` < 0 after a refund, and the most recent payout has `status` = `canceled` | "-$1,874.55" in grey with no label, and a payout row that reads "Canceled" | "Your balance is {balance} because a refund was larger than the money in your balance. We canceled your next payout to cover it. Payouts restart automatically once new sales bring your balance above $0. You don't need to do anything." |
 
 ## Owner messages filled in for Maria
 
@@ -44,6 +44,15 @@ The message must always say why. Common reasons and next steps:
 | your payout schedule is set to manual | "You can send a payout yourself from Balances." |
 | payouts are paused on your account | "Check Settings > Payouts to turn them back on." |
 | your bank account needs updating | "Update your bank details in Settings > Payouts." |
+| your next automatic payout hasn't been created yet | "It will show here as soon as it's on its way." |
+
+## Wording changes for review (Nov 2026)
+
+Changed while building Home against the held-out data (17 to 30 Nov). Grace Liu to review.
+
+- `payout_scheduled`: removed "ending {last4}". The payout rows in the held-out data don't include bank digits, and the response contract has no field for them.
+- `negative_after_refund`: "the catering refund" is now "a refund". In the held-out data the refund that caused the negative balance was a canceled wedding cake order, not catering.
+- `no_payout`: added the reason "your next automatic payout hasn't been created yet". It covers money that is available but has no payout yet, which happens on 9 of the 13 held-out days.
 
 ## Notes on the source data
 

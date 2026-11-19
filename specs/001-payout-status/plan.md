@@ -58,3 +58,10 @@ tests/
   fixtures/*.csv
   test_service.py
 ```
+
+## Update (19 Nov 2026): official contract and Home
+
+- `contracts/payout-state.schema.json` is now Dashboard Engineering's Payout State Service Response Contract v1.0.0 (amounts in integer USD cents; fields `account_id`, `state`, `available_balance`, `pending_balance`, `next_payout_id`, `next_payout_amount`, `next_payout_arrival_date`, `pending_available_on`, `message`). The service and the tests follow it.
+- `pending_available_on` is the earliest `available_on` after the latest transaction's date among pending rows.
+- Home is a Next.js app (`app/`, `lib/payoutState.ts`), a TypeScript port of the Python service. `npm run parity` checks both return identical responses on every fixture and every held-out day.
+- **Open contract gap [NEEDS CLARIFICATION]:** money available and pending with no payout created matches none of the four contract states. `no_payout` requires `pending_balance` = 0. In the held-out data this is true on 9 of 13 days. The service returns `no_payout` with the "hasn't been created yet" reason, and that response fails the contract on `pending_balance` and `pending_available_on`.

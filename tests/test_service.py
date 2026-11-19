@@ -1,122 +1,132 @@
-"""Tests for the payout state service. Run: python -m unittest -v"""
-import json
+"""Tests for the payout state service. Run from the repo root: python -m unittest -v"""
 import re
 import unittest
 from pathlib import Path
 
 from payout_state import get_payout_state
 from payout_state.templates import load_templates
+from tests.contract import contract_errors
 
 ROOT = Path(__file__).resolve().parent.parent
 FIX = ROOT / "tests" / "fixtures"
-SCHEMA = json.loads((ROOT / "specs" / "001-payout-status" / "contracts" / "payout-state.schema.json").read_text())
-MARIA_CSV = ROOT / "data" / "Maria's Bakery Balance Transactions, Sep-Nov 2026 (Stripe test mode).csv"
+DATA = ROOT / "data"
+SEP_NOV = DATA / "Maria's Bakery Balance Transactions, Sep-Nov 2026 (Stripe test mode).csv"
+HELDOUT = DATA / "maria_bakery_balance_transactions_heldout_nov_2026.csv"
+MARIA = "acct_test_maria_bakery"
 ACCT = "acct_test_fixture"
 MESSAGES, REASONS = load_templates()
 
 
-def run(name, as_of="2026-11-16"):
+def run(name, as_of=None):
     return get_payout_state(FIX / f"{name}.csv", ACCT, as_of)
 
 
-def check_contract(test, result):
-    """Validate a result against the nine-field contract."""
-    props = SCHEMA["properties"]
-    test.assertEqual(set(result), set(SCHEMA["required"]), "must return exactly the contract fields")
-    test.assertEqual(len(result), 9)
-    for key, value in result.items():
-        spec = props[key]
-        types = spec["type"] if isinstance(spec["type"], list) else [spec["type"]]
-        pytype = {"string": str, "null": type(None), "array": list}
-        test.assertTrue(any(isinstance(value, pytype[t]) for t in types), f"{key} has wrong type")
-        if "enum" in spec:
-            test.assertIn(value, spec["enum"])
-        if "pattern" in spec and isinstance(value, str):
-            test.assertRegex(value, spec["pattern"])
-        if spec.get("format") == "date" and isinstance(value, str):
-            test.assertRegex(value, r"^\d{4}-\d{2}-\d{2}$")
-    test.assertTrue(all(isinstance(i, str) for i in result["source_transaction_ids"]))
-
-
 class EachState(unittest.TestCase):
+    def assertValid(self, r):
+        self.assertEqual(contract_errors(r), [])
+        self.assertNotRegex(r["message"], r"[{}]")
+
     def test_negative_after_refund(self):
         r = run("negative_after_refund")
-        check_contract(self, r)
-        self.assertEqual(r["state_id"], "negative_after_refund")
-        self.assertEqual(r["amount"], "-1874.55")
+        self.assertValid(r)
+        self.assertEqual(r["state"], "negative_after_refund")
+        self.assertEqual(r["available_balance"], -187455)
+        self.assertIsNone(r["next_payout_id"])
         self.assertIn("-$1,874.55", r["message"])
-        self.assertIn("txn_3", r["source_transaction_ids"])  # the refund
-        self.assertIn("txn_4", r["source_transaction_ids"])  # the canceled payout
+        self.assertIn("canceled", r["message"])
 
     def test_payout_scheduled(self):
         r = run("payout_scheduled")
-        check_contract(self, r)
-        self.assertEqual(r["state_id"], "payout_scheduled")
-        self.assertEqual(r["message"],
-                         "$4,200.00 is on its way to your bank account ending 6621. Expected to arrive 2026-11-19.")
-        self.assertEqual(r["date"], "2026-11-19")
+        self.assertValid(r)
+        self.assertEqual(r["state"], "payout_scheduled")
+        self.assertEqual((r["next_payout_id"], r["next_payout_amount"], r["next_payout_arrival_date"]),
+                         ("po_2", 420000, "2026-11-19"))
+        self.assertIn("$4,200.00", r["message"])
 
-    def test_pending_only_ignores_past_dates(self):
+    def test_pending_only(self):
         r = run("pending_only")
-        check_contract(self, r)
-        self.assertEqual(r["state_id"], "pending_only")
-        self.assertEqual(r["amount"], "532.30")
-        self.assertEqual(r["date"], "2026-11-19")  # 2026-11-03 is before as_of, so ignored
+        self.assertValid(r)
+        self.assertEqual(r["state"], "pending_only")
+        self.assertEqual(r["pending_balance"], 53230)
+        self.assertEqual(r["pending_available_on"], "2026-11-19")  # 2026-11-03 is in the past, so skipped
         self.assertIn("$532.30", r["message"])
 
     def test_no_payout_balance_zero(self):
         r = run("all_zero")
-        check_contract(self, r)
-        self.assertEqual(r["state_id"], "no_payout")
-        self.assertIn("balance is $0", r["reason"])
-        self.assertIn(REASONS[r["reason"]], r["message"])
+        self.assertValid(r)
+        self.assertEqual(r["state"], "no_payout")
+        self.assertIn("balance is $0", r["message"])
 
     def test_no_payout_bank_needs_update(self):
         r = run("bank_needs_update")
-        check_contract(self, r)
-        self.assertEqual(r["state_id"], "no_payout")
-        self.assertIn("bank account", r["reason"])
+        self.assertValid(r)
+        self.assertIn("bank account needs updating", r["message"])
 
 
 class Overlaps(unittest.TestCase):
     def test_negative_beats_in_transit(self):
         r = run("negative_with_in_transit")
-        self.assertEqual(r["state_id"], "negative_after_refund")
-        self.assertEqual(r["amount"], "-231.20")
+        self.assertEqual(r["state"], "negative_after_refund")
+        self.assertIsNone(r["next_payout_id"])
+        self.assertEqual(contract_errors(r), [])
 
     def test_in_transit_beats_pending(self):
         r = run("pending_with_in_transit")
-        self.assertEqual(r["state_id"], "payout_scheduled")
-        self.assertEqual(r["amount"], "880.00")
+        self.assertEqual(r["state"], "payout_scheduled")
+        self.assertEqual(r["next_payout_amount"], 88000)
+
+    def test_earliest_arrival_is_next(self):
+        r = run("payout_scheduled_other", as_of="2026-10-05")
+        self.assertEqual((r["next_payout_id"], r["next_payout_amount"]), ("po_2", 123456))
+
+
+class HeldOutNovember(unittest.TestCase):
+    """Maria's held-out data, 17 to 30 Nov 2026. It is self-contained: its running balances carry on from Sep to Nov."""
+
+    def state_on(self, day):
+        return get_payout_state(HELDOUT, MARIA, day)
+
+    def test_negative_on_20_nov(self):
+        r = self.state_on("2026-11-20")
+        self.assertEqual(r["state"], "negative_after_refund")
+        self.assertEqual(r["available_balance"], -2492)
+        self.assertEqual(contract_errors(r), [])
+
+    def test_pending_only_on_26_nov(self):
+        r = self.state_on("2026-11-26")
+        self.assertEqual(r["state"], "pending_only")
+        self.assertEqual((r["pending_balance"], r["pending_available_on"]), (14505, "2026-11-27"))
+        self.assertEqual(contract_errors(r), [])
+
+    def test_payout_scheduled_on_payroll_day(self):
+        r = self.state_on("2026-11-30")
+        self.assertEqual(r["state"], "payout_scheduled")
+        self.assertEqual((r["next_payout_id"], r["next_payout_amount"], r["next_payout_arrival_date"]),
+                         ("po_0090", 4000, "2026-11-30"))
+        self.assertEqual(contract_errors(r), [])
+
+    def test_money_with_no_payout_is_outside_the_contract(self):
+        """17 Nov: $1,396.25 available, $387.08 pending, no payout. The contract's no_payout
+        requires pending = 0, so this response can't pass it. Open question for Eryn."""
+        r = self.state_on("2026-11-17")
+        self.assertEqual(r["state"], "no_payout")
+        self.assertIn("hasn't been created yet", r["message"])
+        self.assertTrue(any("pending_balance" in e for e in contract_errors(r)))
 
 
 class NothingHardCoded(unittest.TestCase):
-    def test_other_figures_flow_through(self):
-        r = run("payout_scheduled_other", as_of="2026-10-05")
-        self.assertEqual(r["state_id"], "payout_scheduled")
-        self.assertEqual(r["amount"], "1234.56")  # earliest arrival wins over the $50 payout
-        self.assertIn("ending 4242", r["message"])
-        self.assertIn("2026-10-07", r["message"])
-
     def test_as_of_changes_the_answer(self):
-        before = run("negative_after_refund", as_of="2026-11-11")
-        after = run("negative_after_refund", as_of="2026-11-16")
-        self.assertNotEqual(before["state_id"], after["state_id"])
+        days = ["2026-11-20", "2026-11-26", "2026-11-30"]
+        states = {get_payout_state(HELDOUT, MARIA, d)["state"] for d in days}
+        self.assertEqual(len(states), 3)
 
     def test_code_has_no_case_values_or_wording(self):
         code = "".join(p.read_text(encoding="utf-8") for p in (ROOT / "payout_state").glob("*.py"))
-        for baked in ["4200", "4,200", "1874", "1,874", "6621", "maria"]:
+        for baked in ["4200", "4,200", "1874", "1,874", "6621", "maria", "po_00", "2026-11"]:
             self.assertNotIn(baked, code.lower())
         for template in MESSAGES.values():
             words = re.sub(r"\{\w+\}", "", template)[:40]
             self.assertNotIn(words, code)
-
-
-class MariasFile(unittest.TestCase):
-    def test_runs_on_all_420_rows(self):
-        r = get_payout_state(MARIA_CSV, "acct_test_maria_bakery", "2026-11-16")
-        check_contract(self, r)
-        self.assertIn(r["state_id"], SCHEMA["properties"]["state_id"]["enum"])
 
 
 if __name__ == "__main__":

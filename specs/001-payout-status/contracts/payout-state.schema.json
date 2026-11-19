@@ -1,52 +1,174 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "payout-state.schema.json",
-  "title": "PayoutState",
-  "description": "What the payout state service returns for one account on one as_of date. Exactly nine fields.",
+  "$id": "payout-state-response.schema.json",
+  "title": "PayoutStateResponse",
+  "description": "Payout State Service Response Contract. The payout state service in the stripe-home-payout repo returns this object for one connected account. Panel 1 at the top of the rebuilt Home page shows the balance and next payout with the state message, and it renders only what this object contains. The Dashboard Web Playwright checks validate every response against this schema. All amounts are integer USD cents, and Home formats them as dollars with two decimals, e.g. 125000 -> $1,250.00. The service must work out every value from the balance transactions in maria_bakery_balance_transactions_sep_nov_2026.csv, which has 420 rows, txn_0001 to txn_0420, dated 1 September 2026 to 16 November 2026. It must never return a fixed state per test case.",
+  "$comment": "Entity: PayoutStateResponse. Owner: Dashboard Engineering. Daniel Okafor, Engineering Manager, Dashboard Web, keeps this contract. Tomas Herrera and Keiko Sato (Payouts Engineering) review the spec and plan. Lena Fischer reviews the Playwright checks. State ids and messages come from docs/payout-states.md. States are checked in this order and the first match wins: negative_after_refund, payout_scheduled, pending_only, no_payout. Validate one response for each of Maria's four cases: case_payout_scheduled, case_pending_only, case_no_payout and case_negative_after_refund. Contract version 1.0.0, Nov 2026, for Maria's month-end payroll day, Mon 30 Nov 2026.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["account_id", "as_of", "state_id", "message", "amount", "currency", "date", "reason", "source_transaction_ids"],
+  "required": [
+    "account_id",
+    "state",
+    "available_balance",
+    "pending_balance",
+    "next_payout_id",
+    "next_payout_amount",
+    "next_payout_arrival_date",
+    "pending_available_on",
+    "message"
+  ],
   "properties": {
     "account_id": {
       "type": "string",
-      "description": "Stripe account the state is for, e.g. acct_test_maria_bakery."
+      "minLength": 1,
+      "description": "The Stripe connected account id that this response describes. It must equal the account_id column of the balance transactions the service read. For all of Maria's cases this is acct_test_maria_bakery.",
+      "examples": ["acct_test_maria_bakery"]
     },
-    "as_of": {
+    "state": {
       "type": "string",
-      "format": "date",
-      "description": "Only transactions created on or before this date were used."
+      "enum": [
+        "payout_scheduled",
+        "pending_only",
+        "no_payout",
+        "negative_after_refund"
+      ],
+      "description": "The payout state id, spelled exactly as in docs/payout-states.md. There are exactly four states. They are checked in this order and the first match wins. (1) negative_after_refund: a refund pushed running_available_balance below $0 and the scheduled payout's payout_status became canceled. (2) payout_scheduled: the available balance is >= $0 and a payout with payout_status pending or in_transit exists. (3) pending_only: the available balance = $0, the pending balance > $0, and no payout is pending or in_transit. (4) no_payout: the available balance >= $0, the pending balance = $0, and no payout is pending or in_transit."
     },
-    "state_id": {
-      "type": "string",
-      "enum": ["negative_after_refund", "payout_scheduled", "pending_only", "no_payout"]
+    "available_balance": {
+      "type": "integer",
+      "description": "The available balance in USD cents, taken from running_available_balance on the latest balance transaction by created_at. It may be negative. In negative_after_refund it is below 0, e.g. -18500 means -$185.00.",
+      "examples": [0, 126800, -18500]
+    },
+    "pending_balance": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The pending balance in USD cents, taken from running_pending_balance on the latest balance transaction by created_at. It is never negative. Charge funds stay pending until their available_on date, 2 business days after the charge.",
+      "examples": [0, 41275]
+    },
+    "next_payout_id": {
+      "type": ["string", "null"],
+      "pattern": "^po_[A-Za-z0-9]+$",
+      "description": "The payout_id of the next payout. The next payout is the payout with payout_status pending or in_transit and the earliest payout_arrival_date. This field is null when no such payout exists. A canceled, paid or failed payout is never the next payout.",
+      "examples": ["po_0061", null]
+    },
+    "next_payout_amount": {
+      "type": ["integer", "null"],
+      "exclusiveMinimum": 0,
+      "description": "The amount of the next payout in USD cents, read from the payout row for next_payout_id. It is a positive number. It is null exactly when next_payout_id is null. Home shows this figure first, with no clicks.",
+      "examples": [126800, null]
+    },
+    "next_payout_arrival_date": {
+      "$ref": "#/$defs/isoDateOrNull",
+      "description": "The payout_arrival_date of the next payout as an ISO 8601 calendar date (YYYY-MM-DD). It is null exactly when next_payout_id is null. Home shows it beside next_payout_amount.",
+      "examples": ["2026-11-18", null]
+    },
+    "pending_available_on": {
+      "$ref": "#/$defs/isoDateOrNull",
+      "description": "The earliest available_on date (YYYY-MM-DD) among balance transactions whose balance_status is still pending. This is the date the first pending funds become available. It is null exactly when pending_balance is 0. It must be filled in for pending_only.",
+      "examples": ["2026-11-18", null]
     },
     "message": {
-      "type": ["string", "null"],
-      "description": "Owner message from docs/payout-states.md with placeholders filled. Null only when the reason is unknown."
-    },
-    "amount": {
-      "type": ["string", "null"],
-      "pattern": "^-?[0-9]+\\.[0-9]{2}$",
-      "description": "The headline amount as a decimal string: payout amount, pending amount, or available balance (negative when below zero)."
-    },
-    "currency": {
       "type": "string",
-      "pattern": "^[a-z]{3}$",
-      "description": "Lowercase ISO currency code from the transactions."
-    },
-    "date": {
-      "type": ["string", "null"],
-      "format": "date",
-      "description": "Payout arrival date (payout_scheduled) or the date pending money becomes available (pending_only). Null otherwise."
-    },
-    "reason": {
-      "type": ["string", "null"],
-      "description": "Why this state applies: the refund description for negative_after_refund, the no_payout reason (or 'unknown'), null otherwise."
-    },
-    "source_transaction_ids": {
-      "type": "array",
-      "items": { "type": "string" },
-      "description": "balance_transaction_id values the result was worked out from."
+      "minLength": 1,
+      "pattern": "^[^{}]*$",
+      "description": "The plain-language message shown to the owner in Panel 1. It is taken from the state's entry in docs/payout-states.md, which Grace Liu writes and reviews. Its figures are filled in as dollars with two decimals, e.g. $1,250.00. It must contain no unfilled {placeholders}. For negative_after_refund it must say the payout was canceled because of the refund, and that payouts resume once the balance is above $0."
     }
-  }
+  },
+  "$defs": {
+    "isoDateOrNull": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$",
+      "$comment": "An ISO 8601 calendar date in YYYY-MM-DD form, with no time part. It is checked by pattern rather than by format, so validators without format plugins still enforce it. JSON Schema applies pattern only to strings, so null still passes."
+    }
+  },
+  "allOf": [
+    {
+      "$comment": "The three next payout fields are either all null or all filled in.",
+      "if": {
+        "properties": { "next_payout_id": { "type": "null" } },
+        "required": ["next_payout_id"]
+      },
+      "then": {
+        "properties": {
+          "next_payout_amount": { "type": "null" },
+          "next_payout_arrival_date": { "type": "null" }
+        }
+      },
+      "else": {
+        "properties": {
+          "next_payout_amount": { "type": "integer" },
+          "next_payout_arrival_date": { "type": "string" }
+        }
+      }
+    },
+    {
+      "$comment": "pending_available_on is null exactly when pending_balance is 0.",
+      "if": {
+        "properties": { "pending_balance": { "const": 0 } },
+        "required": ["pending_balance"]
+      },
+      "then": {
+        "properties": { "pending_available_on": { "type": "null" } }
+      },
+      "else": {
+        "properties": { "pending_available_on": { "type": "string" } }
+      }
+    },
+    {
+      "$comment": "negative_after_refund: the balance is below $0 and the canceled payout is not shown as the next payout.",
+      "if": {
+        "properties": { "state": { "const": "negative_after_refund" } },
+        "required": ["state"]
+      },
+      "then": {
+        "properties": {
+          "available_balance": { "exclusiveMaximum": 0 },
+          "next_payout_id": { "type": "null" }
+        }
+      }
+    },
+    {
+      "$comment": "payout_scheduled: the balance is >= $0 and a pending or in_transit payout is filled in.",
+      "if": {
+        "properties": { "state": { "const": "payout_scheduled" } },
+        "required": ["state"]
+      },
+      "then": {
+        "properties": {
+          "available_balance": { "minimum": 0 },
+          "next_payout_id": { "type": "string" }
+        }
+      }
+    },
+    {
+      "$comment": "pending_only: the available balance is exactly $0, funds are pending, and no payout is pending or in_transit.",
+      "if": {
+        "properties": { "state": { "const": "pending_only" } },
+        "required": ["state"]
+      },
+      "then": {
+        "properties": {
+          "available_balance": { "const": 0 },
+          "pending_balance": { "minimum": 1 },
+          "next_payout_id": { "type": "null" },
+          "pending_available_on": { "type": "string" }
+        }
+      }
+    },
+    {
+      "$comment": "no_payout: the balance is >= $0, nothing is pending, and no payout is pending or in_transit.",
+      "if": {
+        "properties": { "state": { "const": "no_payout" } },
+        "required": ["state"]
+      },
+      "then": {
+        "properties": {
+          "available_balance": { "minimum": 0 },
+          "pending_balance": { "const": 0 },
+          "next_payout_id": { "type": "null" },
+          "pending_available_on": { "type": "null" }
+        }
+      }
+    }
+  ]
 }
