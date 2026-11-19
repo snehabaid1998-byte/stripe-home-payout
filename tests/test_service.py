@@ -3,7 +3,7 @@ import re
 import unittest
 from pathlib import Path
 
-from payout_state import get_payout_state
+from payout_state import balance_notices, get_payout_state
 from payout_state.templates import load_templates
 from tests.contract import contract_errors
 
@@ -129,6 +129,25 @@ class UsualPayoutTime(unittest.TestCase):
         self.assertNotIn("usually created", r["message"])
 
 
+class FailedPayoutNotice(unittest.TestCase):
+    def test_held_out_failed_payout_is_flagged(self):
+        notices = balance_notices(HELDOUT, MARIA, "2026-11-30")
+        self.assertEqual([(n["payout_id"], n["amount"]) for n in notices], [("po_0081", 30000)])
+        self.assertIn("$300.00", notices[0]["text"])
+        self.assertIn("Tuesday 17 November 2026", notices[0]["text"])
+        self.assertNotRegex(notices[0]["text"], r"[{}]")
+
+    def test_no_notice_before_the_failure(self):
+        self.assertEqual(balance_notices(HELDOUT, MARIA, "2026-11-17T17:00"), [])
+
+    def test_no_notice_when_money_came_back(self):
+        self.assertEqual(balance_notices(FIX / "failed_payout_returned.csv", ACCT), [])
+
+    def test_notice_does_not_change_contract_figures(self):
+        r = get_payout_state(HELDOUT, MARIA, "2026-11-20")
+        self.assertEqual((r["state"], r["available_balance"]), ("negative_after_refund", -2492))
+
+
 class NothingHardCoded(unittest.TestCase):
     def test_as_of_changes_the_answer(self):
         days = ["2026-11-20", "2026-11-26", "2026-11-30"]
@@ -137,7 +156,7 @@ class NothingHardCoded(unittest.TestCase):
 
     def test_code_has_no_case_values_or_wording(self):
         code = "".join(p.read_text(encoding="utf-8") for p in (ROOT / "payout_state").glob("*.py"))
-        for baked in ["4200", "4,200", "1874", "1,874", "6621", "maria", "po_00", "2026-11"]:
+        for baked in ["4200", "4,200", "1874", "1,874", "6621", "maria", "po_00", "2026-11", "300.00", "30000"]:
             self.assertNotIn(baked, code.lower())
         for template in MESSAGES.values():
             words = re.sub(r"\{\w+\}", "", template)[:40]

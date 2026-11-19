@@ -181,6 +181,32 @@ export function getPayoutState(all: Row[], docText: string, accountId: string, a
   };
 }
 
+export type BalanceNotice = { notice_id: string; payout_id: string; amount: number; text: string };
+
+export function loadNotices(docText: string): Record<string, string> {
+  return Object.fromEntries(tableRows(docText, "## Balance notices").map((c) => [c[0].replace(/`/g, ""), unquote(c[c.length - 1])]));
+}
+
+const RETURN_TYPES = new Set(["payout_failure", "payout_cancel"]);
+
+// Notices for the Balance panel. Not part of the contract response.
+export function balanceNotices(all: Row[], docText: string, accountId: string, asOf?: string): BalanceNotice[] {
+  const notices = loadNotices(docText);
+  const rows = selectRows(all, accountId, asOf);
+  return rows
+    .filter((r) => r.type === "payout" && r.payout_status === "failed")
+    .filter((r) => !rows.some((o) => o !== r && o.payout_id === r.payout_id && (RETURN_TYPES.has(o.type) || cents(o.amount) > 0)))
+    .map((r) => {
+      const amount = Math.abs(cents(r.amount));
+      return {
+        notice_id: "failed_payout_not_returned",
+        payout_id: r.payout_id,
+        amount,
+        text: fill(notices.failed_payout_not_returned, { amount: money(amount), date: longDay(r.created_at) }),
+      };
+    });
+}
+
 // Data sources shipped with the app. Files are read from the repo at runtime.
 export const SOURCES: Record<string, { label: string; files: string[] }> = {
   heldout: { label: "17 to 30 Nov 2026 (held-out)", files: ["data/maria_bakery_balance_transactions_heldout_nov_2026.csv"] },

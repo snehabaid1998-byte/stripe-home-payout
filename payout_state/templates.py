@@ -43,3 +43,8 @@ def load_templates(doc_path=DOC_PATH):
     for cells in _table_rows(text, "## Reasons for `no_payout`"):
         reasons[cells[0]] = _unquote(cells[1])
     return messages, reasons
+
+
+def load_notices(doc_path=DOC_PATH):
+    text = Path(doc_path).read_text(encoding="utf-8")
+    return {cells[0].strip("`"): _unquote(cells[-1]) for cells in _table_rows(text, "## Balance notices")}

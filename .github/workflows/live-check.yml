@@ -1,0 +1,40 @@
+# After every successful Vercel production deploy, open the live Home page in a browser
+# and check every held-out day (state, message, card above the fold at 1440x900).
+# Needs Vercel > Project Settings > Git > "deployment_status Events" turned on.
+# Also runs every morning, and on demand from the Actions tab.
+name: Live check
+
+on:
+  deployment_status:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 2 * * *"   # 07:47 IST daily
+
+env:
+  HOME_URL: https://stripe-home-payout-sixz.vercel.app
+
+jobs:
+  e2e:
+    if: >-
+      github.event_name != 'deployment_status' ||
+      (github.event.deployment_status.state == 'success' &&
+       github.event.deployment.environment == 'Production')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.deployment.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Browser check against the live site
+        run: npm run e2e
+      - name: Keep the report if it fails
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-results
+          path: test-results/

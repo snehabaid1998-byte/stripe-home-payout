@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getPayoutState, loadSource, longDay, money, cents, selectRows, SOURCES, type Row } from "@/lib/payoutState";
+import { balanceNotices, getPayoutState, loadSource, longDay, money, cents, selectRows, SOURCES, type Row } from "@/lib/payoutState";
 
 export const dynamic = "force-dynamic";
 
@@ -21,6 +21,7 @@ export default async function Home({ searchParams }: { searchParams: Search }) {
   const asOf = sp.as_of && days.includes(sp.as_of) ? sp.as_of : days[days.length - 1];
 
   const s = getPayoutState(all, doc, account, asOf);
+  const notices = balanceNotices(all, doc, account, asOf);
   const rows = selectRows(all, account, asOf);
   const look = LOOK[s.state];
   const neg = s.state === "negative_after_refund";
@@ -97,13 +98,16 @@ export default async function Home({ searchParams }: { searchParams: Search }) {
             <div className={s.state === "no_payout" ? "btn" : "btn ghost"}>{look.action}</div>
           </section>
 
-          <section className="card w6 h2">
+          <section className="card w6 h2 bal">
             <div className="ct">Balance<em>BalanceSummaryCard</em></div>
             <div className="split">
               <div>Available<b className={s.available_balance < 0 ? "r" : ""}>{money(s.available_balance)}</b></div>
               <div>Pending<b>{money(s.pending_balance)}</b></div>
             </div>
             <div className="sub">{balanceNote}</div>
+            {notices.map((n) => (
+              <div key={n.payout_id} className="notice" data-testid="balance-notice">{n.text}</div>
+            ))}
             <a className="lk">View balances</a>
           </section>
 

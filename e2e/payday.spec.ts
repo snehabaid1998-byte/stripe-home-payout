@@ -49,3 +49,13 @@ test("default view is payroll day with the next payout first", async ({ page }) 
   await expect(card).toHaveAttribute("data-state", "payout_scheduled");
   await expect(card).toContainText("$40.00");
 });
+
+test("failed $300 payout is explained in the Balance panel", async ({ page, request }) => {
+  await page.goto("/?as_of=2026-11-20");
+  const notice = page.getByTestId("balance-notice");
+  await expect(notice).toHaveCount(1);
+  await expect(notice).toContainText("$300.00");
+  // The contract figures stay as recorded: the notice explains the gap, it doesn't change the state.
+  const api = await (await request.get("/api/payout-state?as_of=2026-11-20")).json();
+  expect(api.available_balance).toBe(-2492);
+});

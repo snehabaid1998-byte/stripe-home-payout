@@ -3,7 +3,7 @@
 // Run from the repo root: npm run parity
 import { execFileSync } from "node:child_process";
 import { readdirSync, readFileSync } from "node:fs";
-import { getPayoutState, parseCsv } from "../lib/payoutState.ts";
+import { balanceNotices, getPayoutState, parseCsv } from "../lib/payoutState.ts";
 
 const doc = readFileSync("docs/payout-states.md", "utf8");
 const cases: { file: string; account: string; asOf?: string }[] = [];
@@ -16,12 +16,16 @@ for (const day of [...new Set(heldRows.map((r) => r.created_at.slice(0, 10)))]) 
 const python = process.platform === "win32" ? "python" : "python3";
 let failed = 0;
 for (const c of cases) {
-  const ts = getPayoutState(parseCsv(readFileSync(c.file, "utf8")), doc, c.account, c.asOf);
+  const rows = parseCsv(readFileSync(c.file, "utf8"));
+  const ts = { state: getPayoutState(rows, doc, c.account, c.asOf), notices: balanceNotices(rows, doc, c.account, c.asOf) };
   const args = ["-m", "payout_state", "--csv", c.file, "--account", c.account, ...(c.asOf ? ["--as-of", c.asOf] : [])];
-  const py = JSON.parse(execFileSync(python, args, { encoding: "utf8" }));
+  const py = {
+    state: JSON.parse(execFileSync(python, args, { encoding: "utf8" })),
+    notices: JSON.parse(execFileSync(python, [...args, "--notices"], { encoding: "utf8" })),
+  };
   const same = JSON.stringify(ts) === JSON.stringify(py);
   if (!same) failed++;
-  console.log(`${same ? "same" : "DIFF"}  ${c.file}${c.asOf ? " @ " + c.asOf : ""}  ${ts.state}`);
+  console.log(`${same ? "same" : "DIFF"}  ${c.file}${c.asOf ? " @ " + c.asOf : ""}  ${ts.state.state}${ts.notices.length ? " + " + ts.notices.length + " notice" : ""}`);
   if (!same) console.log("  ts:", JSON.stringify(ts), "\n  py:", JSON.stringify(py));
 }
 console.log(`\n${cases.length - failed}/${cases.length} match`);

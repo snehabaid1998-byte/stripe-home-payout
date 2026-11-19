@@ -47,12 +47,21 @@ The message must always say why. Common reasons and next steps:
 | your next automatic payout hasn't been created yet | "Your daily payout is usually created around {usual_time} on business days, and it will show here as soon as it's on its way." |
 | your next payout hasn't been created yet | "It will show here as soon as it's on its way." |
 
+## Balance notices
+
+Shown in the Balance panel under the figures. They explain a gap in the balance without changing the payout state or the contract figures.
+
+| notice_id | When | Notice |
+|---|---|---|
+| `failed_payout_not_returned` | A payout failed at the bank and no transaction returns its money | "{amount} from a payout your bank declined on {date} should come back to your balance. It isn't in your transactions yet, so Available may look {amount} low." |
+
 ## Wording changes for review (Nov 2026)
 
 Changed while building Home against the held-out data (17 to 30 Nov). Grace Liu to review.
 
 - `payout_scheduled`: removed "ending {last4}". The payout rows in the held-out data don't include bank digits, and the response contract has no field for them.
 - `negative_after_refund`: "the catering refund" is now "a refund". In the held-out data the refund that caused the negative balance was a canceled wedding cake order, not catering.
+- Balance notice `failed_payout_not_returned`: new. po_0081 ($300.00) failed on 17 Nov with no transaction returning the money.
 - `no_payout`: added the reason "your next automatic payout hasn't been created yet", with the usual time daily payouts are created ({usual_time}, worked out from her past payouts). When the data has no payout times, the plainer "your next payout hasn't been created yet" is used instead. It covers money that is available but has no payout yet, which happens on 8 of the 14 held-out days.
 
 ## Notes on the source data

@@ -68,3 +68,5 @@ h1 small { font-size: 13px; font-weight: 400; color: var(--muted); margin-left: 
 .bars span { display: block; width: 60%; background: var(--colorPrimary); border-radius: var(--borderRadius) var(--borderRadius) 0 0; min-height: 2px; }
 .bars span.prev { background: #c1c9d2; }
 .bars label { font-size: 12px; color: var(--muted); }
+.notice { font-size: 12px; line-height: 1.4; color: var(--amber); background: var(--amberbg); border-radius: var(--borderRadius); padding: 6px 10px; }
+.bal { gap: 4px; }

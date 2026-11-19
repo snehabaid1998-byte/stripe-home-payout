@@ -8,6 +8,7 @@
 | Negative after the wedding cake refund | https://stripe-home-payout-sixz.vercel.app/?as_of=2026-11-20 |
 | Money only pending (Thanksgiving) | https://stripe-home-payout-sixz.vercel.app/?as_of=2026-11-26 |
 | Money but no payout yet | https://stripe-home-payout-sixz.vercel.app/?as_of=2026-11-17 |
+| Failed $300 payout explained (Balance panel) | https://stripe-home-payout-sixz.vercel.app/?as_of=2026-11-20 |
 | Contract JSON | https://stripe-home-payout-sixz.vercel.app/api/payout-state?as_of=2026-11-30 |
 
 Payout status for Stripe Dashboard Home, built from Maria's Bakery test-mode data (`acct_test_maria_bakery`, Sep to Nov 2026).
@@ -41,6 +42,11 @@ npm run parity     # TypeScript and Python services must match
 npx playwright install chromium   # first time only
 npm run e2e        # live browser check, see below
 ```
+
+### Automatic checks (GitHub Actions)
+
+- `.github/workflows/checks.yml`: on every push, runs the service tests, the Python/TypeScript parity check and a Next.js build.
+- `.github/workflows/live-check.yml`: after every successful Vercel production deploy (plus every morning, and on demand), opens the live site and runs the browser check below. It needs **Vercel → Project Settings → Git → deployment_status Events** turned on.
 
 ### Live browser check
 
@@ -77,6 +83,12 @@ python -m unittest -v
 | 17 to 19, 23 to 25, 28, 29 Nov | Money available and pending, no payout yet. Home tells Maria her daily payout is usually created around 5 pm on business days (worked out from her payout times). Outside the contract's four states (see the plan and `prompts/build-and-ship-home.md`) |
 
 `no_payout` as the contract defines it (nothing pending) never occurs in the held-out data.
+
+## The failed $300 payout
+
+po_0081 ($300.00) failed at the bank on 17 Nov ("account_closed"), but no transaction returns the money, so every running balance after 17:10 that day is $300 low. Home shows this in the Balance panel ("…should come back to your balance…"), worked out from the data: any failed payout with no `payout_failure`/`payout_cancel` row, or positive amount, for the same payout id.
+
+The contract figures and payout states are left as recorded, because the contract says `available_balance` comes from `running_available_balance`. **Open question:** if the $300 had come back, Maria would never have gone below $0. 20 to 22 Nov would be +$275.08 instead of -$24.92, and 26 Nov would not be `pending_only`. Should the service correct for it?
 
 ## Known data gaps
 

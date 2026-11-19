@@ -12,7 +12,7 @@ import re
 from datetime import date
 from decimal import Decimal
 
-from .templates import load_templates
+from .templates import load_notices, load_templates
 
 ZERO = Decimal("0")
 SCHEDULED = {"pending", "in_transit"}
@@ -135,3 +135,33 @@ def get_payout_state(csv_paths, account_id, as_of=None, doc_path=None):
         "pending_available_on": pending_available_on,
         "message": message,
     }
+
+
+RETURN_TYPES = {"payout_failure", "payout_cancel"}
+
+
+def balance_notices(csv_paths, account_id, as_of=None, doc_path=None):
+    """Notices for the Balance panel. Not part of the contract response.
+
+    failed_payout_not_returned: a payout with status failed and no other row
+    (payout_failure or payout_cancel, or a positive amount) returning its money.
+    """
+    notices = load_notices(doc_path) if doc_path else load_notices()
+    rows = load_rows(csv_paths, account_id, as_of)
+    out = []
+    for r in rows:
+        if r["type"] != "payout" or r["payout_status"] != "failed":
+            continue
+        returned = any(o is not r and o["payout_id"] == r["payout_id"]
+                       and (o["type"] in RETURN_TYPES or _cents(o["amount"]) > 0) for o in rows)
+        if returned:
+            continue
+        amount = abs(_cents(r["amount"]))
+        out.append({
+            "notice_id": "failed_payout_not_returned",
+            "payout_id": r["payout_id"],
+            "amount": amount,
+            "text": _fill(notices["failed_payout_not_returned"],
+                          {"amount": _money(amount), "date": _day(r["created_at"])}),
+        })
+    return out
