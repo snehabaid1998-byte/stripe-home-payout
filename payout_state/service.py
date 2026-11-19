@@ -37,6 +37,16 @@ def _day(iso):
     return f"{d.strftime('%A')} {d.day} {d.strftime('%B %Y')}"
 
 
+def _usual_payout_time(rows):
+    """Typical time of day payouts are created, from rows that carry a time. None if none do."""
+    mins = sorted(int(r["created_at"][11:13]) * 60 + int(r["created_at"][14:16])
+                  for r in rows if r["type"] == "payout" and len(r["created_at"]) >= 16)
+    if not mins:
+        return None
+    hour = (mins[(len(mins) - 1) // 2] + 30) // 60 % 24
+    return f"{hour % 12 or 12} {'am' if hour < 12 else 'pm'}"
+
+
 def _fill(template, values):
     def sub(m):
         key = m.group(1)
@@ -106,8 +116,13 @@ def get_payout_state(csv_paths, account_id, as_of=None, doc_path=None):
         elif payouts and payouts[-1]["payout_failure_reason"]:
             reason = next(k for k in reasons if "bank account" in k)
         else:
-            reason = next(k for k in reasons if "hasn't been created" in k)
-        message = _fill(messages[state], {"reason": reason, "next_step": reasons[reason]})
+            usual = _usual_payout_time(rows)
+            key = "automatic payout hasn't been created" if usual else "next payout hasn't been created"
+            reason = next(k for k in reasons if key in k)
+        next_step = reasons[reason]
+        if "{usual_time}" in next_step:
+            next_step = _fill(next_step, {"usual_time": usual})
+        message = _fill(messages[state], {"reason": reason, "next_step": next_step})
 
     return {
         "account_id": account_id,

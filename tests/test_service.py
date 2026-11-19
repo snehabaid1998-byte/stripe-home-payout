@@ -111,7 +111,22 @@ class HeldOutNovember(unittest.TestCase):
         r = self.state_on("2026-11-17")
         self.assertEqual(r["state"], "no_payout")
         self.assertIn("hasn't been created yet", r["message"])
+        self.assertIn("usually created around 5 pm on business days", r["message"])
         self.assertTrue(any("pending_balance" in e for e in contract_errors(r)))
+
+
+class UsualPayoutTime(unittest.TestCase):
+    def test_time_comes_from_the_data(self):
+        from payout_state.service import _usual_payout_time
+        rows = [{"type": "payout", "created_at": t} for t in
+                ["2026-11-02T08:50:00Z", "2026-11-03T09:10:00Z", "2026-11-04T09:20:00Z"]]
+        self.assertEqual(_usual_payout_time(rows), "9 am")
+
+    def test_no_times_falls_back_to_plain_reason(self):
+        r = get_payout_state(SEP_NOV, MARIA, "2026-11-16")
+        self.assertEqual(r["state"], "no_payout")
+        self.assertIn("It will show here as soon as", r["message"])
+        self.assertNotIn("usually created", r["message"])
 
 
 class NothingHardCoded(unittest.TestCase):

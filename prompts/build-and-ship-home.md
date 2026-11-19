@@ -31,13 +31,13 @@ Shipping: branch home-payout, npm run build + parity + python -m unittest must p
 
 ## Note: money available and pending, but no payout yet
 
-**What happens:** on 9 of the 14 held-out days (17 to 19, 23 to 25, 28 and 29 Nov), Maria has money available and money pending, but no payout has been created yet. The daily automatic payout runs around 17:00, so this is the normal state for most of each business day, and over weekends and the Thanksgiving closure.
+**What happens:** on 8 of the 14 held-out days (17 to 19, 23 to 25, 28 and 29 Nov), Maria has money available and money pending, but no payout has been created yet. The daily automatic payout runs around 17:00, so this is the normal state for most of each business day, and over weekends and the Thanksgiving closure.
 
 **Why it doesn't fit:** the contract's four states don't cover it. `pending_only` needs available = $0, and `no_payout` needs pending = $0.
 
 **Decision:** keep the four states. The stage brief fixes them, and a fifth state would change the contract that Dashboard Engineering, Payouts Engineering and the Playwright checks all depend on.
 
-**What Home does:** returns `no_payout` (the catch-all, so the card is never blank) with the reason from docs/payout-states.md: "No payout is scheduled right now because your next automatic payout hasn't been created yet. It will show here as soon as it's on its way." Balance still shows the real Available and Pending figures, so nothing is hidden.
+**What Home does:** returns `no_payout` (the catch-all, so the card is never blank) with the reason from docs/payout-states.md: "No payout is scheduled right now because your next automatic payout hasn't been created yet. Your daily payout is usually created around 5 pm on business days, and it will show here as soon as it's on its way." The "5 pm" is worked out from her past payout times, not written into the code Balance still shows the real Available and Pending figures, so nothing is hidden.
 
 **Known consequence:** these responses fail the contract on `pending_balance` (must be 0) and `pending_available_on` (must be null) for `no_payout`. A test (`test_money_with_no_payout_is_outside_the_contract`) pins this down so it can't change silently.
 

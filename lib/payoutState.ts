@@ -93,6 +93,16 @@ export function longDay(iso: string): string {
   return `${DAYS[dt.getUTCDay()]} ${d} ${MONTHS[m - 1]} ${y}`;
 }
 
+export function usualPayoutTime(rows: Row[]): string | null {
+  const mins = rows
+    .filter((r) => r.type === "payout" && r.created_at.length >= 16)
+    .map((r) => Number(r.created_at.slice(11, 13)) * 60 + Number(r.created_at.slice(14, 16)))
+    .sort((a, b) => a - b);
+  if (!mins.length) return null;
+  const hour = Math.floor((mins[Math.floor((mins.length - 1) / 2)] + 30) / 60) % 24;
+  return `${hour % 12 || 12} ${hour < 12 ? "am" : "pm"}`;
+}
+
 function fill(template: string, values: Record<string, string>): string {
   return template.replace(/\{(\w+)\}/g, (_, key) => {
     if (!(key in values)) throw new Error(`No value for placeholder {${key}}`);
@@ -148,8 +158,14 @@ export function getPayoutState(all: Row[], docText: string, accountId: string, a
     let reason: string;
     if (available === 0 && pending === 0) reason = keys.find((k) => k.includes("balance is $0"))!;
     else if (payouts.length && payouts[payouts.length - 1].payout_failure_reason) reason = keys.find((k) => k.includes("bank account"))!;
-    else reason = keys.find((k) => k.includes("hasn't been created"))!;
-    message = fill(messages[state], { reason, next_step: reasons[reason] });
+    else {
+      const usual = usualPayoutTime(rows);
+      const key = usual ? "automatic payout hasn't been created" : "next payout hasn't been created";
+      reason = keys.find((k) => k.includes(key))!;
+    }
+    let nextStep = reasons[reason];
+    if (nextStep.includes("{usual_time}")) nextStep = fill(nextStep, { usual_time: usualPayoutTime(rows)! });
+    message = fill(messages[state], { reason, next_step: nextStep });
   }
 
   return {

@@ -1,5 +1,15 @@
 # stripe-home-payout
 
+**Live Home (Vercel):** https://stripe-home-payout-sixz.vercel.app — opens on Maria's payroll day, Mon 30 Nov 2026. Deploys from `master` through the Vercel project linked to this repo; `vercel.json` pins the framework to Next.js.
+
+| Check it | Link |
+|---|---|
+| Payroll day, payout on its way | https://stripe-home-payout-sixz.vercel.app/?as_of=2026-11-30 |
+| Negative after the wedding cake refund | https://stripe-home-payout-sixz.vercel.app/?as_of=2026-11-20 |
+| Money only pending (Thanksgiving) | https://stripe-home-payout-sixz.vercel.app/?as_of=2026-11-26 |
+| Money but no payout yet | https://stripe-home-payout-sixz.vercel.app/?as_of=2026-11-17 |
+| Contract JSON | https://stripe-home-payout-sixz.vercel.app/api/payout-state?as_of=2026-11-30 |
+
 Payout status for Stripe Dashboard Home, built from Maria's Bakery test-mode data (`acct_test_maria_bakery`, Sep to Nov 2026).
 
 ## What's here
@@ -28,7 +38,13 @@ npm install
 npm run dev        # http://localhost:3000
 npm run build
 npm run parity     # TypeScript and Python services must match
+npx playwright install chromium   # first time only
+npm run e2e        # live browser check, see below
 ```
+
+### Live browser check
+
+`e2e/payday.spec.ts` opens the live Vercel site at 1440×900 for every held-out day (17 to 30 Nov). For each day it checks that the page loads, that the payout card shows the expected state and the same message as `/api/payout-state`, and that the whole card sits above the fold. Point it at another deployment with `HOME_URL=<url> npm run e2e`.
 
 ## The payout state service
 
@@ -58,7 +74,7 @@ python -m unittest -v
 | 20, 21, 22 Nov | `negative_after_refund` (wedding cake refund, two payouts canceled) |
 | 26, 27 Nov | `pending_only` ($145.05 becomes available Fri 27 Nov) |
 | 30 Nov | `payout_scheduled` ($40.00, po_0090, arrives Mon 30 Nov) |
-| 17 to 19, 23 to 25, 28, 29 Nov | Money available and pending, no payout yet. Outside the contract's four states (see the plan) |
+| 17 to 19, 23 to 25, 28, 29 Nov | Money available and pending, no payout yet. Home tells Maria her daily payout is usually created around 5 pm on business days (worked out from her payout times). Outside the contract's four states (see the plan and `prompts/build-and-ship-home.md`) |
 
 `no_payout` as the contract defines it (nothing pending) never occurs in the held-out data.
 

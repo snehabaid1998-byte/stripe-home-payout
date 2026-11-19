@@ -44,7 +44,8 @@ The message must always say why. Common reasons and next steps:
 | your payout schedule is set to manual | "You can send a payout yourself from Balances." |
 | payouts are paused on your account | "Check Settings > Payouts to turn them back on." |
 | your bank account needs updating | "Update your bank details in Settings > Payouts." |
-| your next automatic payout hasn't been created yet | "It will show here as soon as it's on its way." |
+| your next automatic payout hasn't been created yet | "Your daily payout is usually created around {usual_time} on business days, and it will show here as soon as it's on its way." |
+| your next payout hasn't been created yet | "It will show here as soon as it's on its way." |
 
 ## Wording changes for review (Nov 2026)
 
@@ -52,7 +53,7 @@ Changed while building Home against the held-out data (17 to 30 Nov). Grace Liu 
 
 - `payout_scheduled`: removed "ending {last4}". The payout rows in the held-out data don't include bank digits, and the response contract has no field for them.
 - `negative_after_refund`: "the catering refund" is now "a refund". In the held-out data the refund that caused the negative balance was a canceled wedding cake order, not catering.
-- `no_payout`: added the reason "your next automatic payout hasn't been created yet". It covers money that is available but has no payout yet, which happens on 8 of the 14 held-out days.
+- `no_payout`: added the reason "your next automatic payout hasn't been created yet", with the usual time daily payouts are created ({usual_time}, worked out from her past payouts). When the data has no payout times, the plainer "your next payout hasn't been created yet" is used instead. It covers money that is available but has no payout yet, which happens on 8 of the 14 held-out days.
 
 ## Notes on the source data
 
