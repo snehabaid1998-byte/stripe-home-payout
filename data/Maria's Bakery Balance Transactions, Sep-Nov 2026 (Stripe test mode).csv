@@ -1,0 +1,421 @@
+balance_transaction_id,account_id,created_at,available_on,type,source_id,amount,fee,net,currency,balance_status,payout_id,payout_status,payout_arrival_date,payout_failure_reason,running_available_balance,running_pending_balance,description
+txn_1,acct_test_maria_bakery,2026-10-20,2026-10-26,charge,ch_0txn_1,102.18,9.9,128.91,usd,available,,,,,4029.49,4907.49,Birthday cake pickup
+txn_2,acct_test_maria_bakery,2026-09-18,2026-10-09,charge,ch_0txn_2,165.48,3.52,371.84,usd,pending,,,,,5537.94,4875.61,Morning coffee and croissant
+txn_3,acct_test_maria_bakery,2026-09-13,2026-09-12,payout,po_00txn_3,-3147.17,0.0,-2528.44,usd,available,po_00txn_3,paid,2026-11-02,,3093.91,2834.46,Automatic payout to bank ****6621
+txn_4,acct_test_maria_bakery,2026-11-10,2026-09-04,charge,ch_0txn_4,198.23,9.91,257.88,usd,available,,,,,5656.62,1825.6,Catering order - office breakfast
+txn_5,acct_test_maria_bakery,2026-10-12,2026-09-11,charge,ch_0txn_5,60.5,12.09,329.15,usd,available,,,,,684.96,1755.49,Birthday cake pickup
+txn_6,acct_test_maria_bakery,2026-11-02,2026-09-16,charge,ch_0txn_6,196.82,7.07,333.68,usd,available,,,,,6559.53,3273.07,Birthday cake pickup
+txn_7,acct_test_maria_bakery,2026-10-07,2026-10-29,charge,ch_0txn_7,79.52,3.42,81.06,usd,pending,,,,,369.27,5299.77,Morning coffee and croissant
+txn_8,acct_test_maria_bakery,2026-10-31,2026-09-11,charge,ch_0txn_8,275.37,11.56,344.89,usd,pending,,,,,6288.5,2937.62,Wholesale order - café on Elm St
+txn_9,acct_test_maria_bakery,2026-11-07,2026-10-08,charge,ch_0txn_9,260.16,11.23,243.67,usd,pending,,,,,4004.97,2455.02,Catering order - office breakfast
+txn_10,acct_test_maria_bakery,2026-10-16,2026-09-13,charge,ch_0txn_10,124.75,8.06,345.94,usd,available,,,,,5014.4,667.84,Counter sale - pastry box
+txn_11,acct_test_maria_bakery,2026-10-18,2026-09-24,charge,ch_0txn_11,29.27,2.28,286.89,usd,available,,,,,3966.21,4917.69,Birthday cake pickup
+txn_12,acct_test_maria_bakery,2026-09-10,2026-09-06,charge,ch_0txn_12,161.5,7.41,164.12,usd,available,,,,,6670.44,235.06,Counter sale - sourdough loaves
+txn_13,acct_test_maria_bakery,2026-09-25,2026-09-26,fee,ch_0txn_13,-11.16,0.0,-1.26,usd,available,,,,,2980.37,584.04,Stripe processing fee
+txn_14,acct_test_maria_bakery,2026-09-09,2026-10-01,charge,ch_0txn_14,87.91,2.68,209.16,usd,available,,,,,821.13,5336.94,Counter sale - pastry box
+txn_15,acct_test_maria_bakery,2026-10-04,2026-10-18,payout,po_00txn_15,-1898.03,0.0,-3547.72,usd,available,po_00txn_15,paid,2026-09-22,,5772.07,1874.8,Automatic payout to bank ****6621
+txn_16,acct_test_maria_bakery,2026-09-16,2026-11-18,payout,po_00txn_16,-4174.5,0.0,-734.62,usd,pending,po_00txn_16,paid,2026-10-21,,5720.45,1385.0,Automatic payout to bank ****6621
+txn_17,acct_test_maria_bakery,2026-10-29,2026-09-13,charge,ch_0txn_17,141.88,2.14,312.72,usd,available,,,,,4207.4,3649.44,Birthday cake pickup
+txn_18,acct_test_maria_bakery,2026-09-17,2026-10-12,charge,ch_0txn_18,249.58,1.49,245.59,usd,available,,,,,1214.53,1235.8,Wholesale order - café on Elm St
+txn_19,acct_test_maria_bakery,2026-10-19,2026-11-14,payout,po_00txn_19,-3326.56,0.0,-2589.83,usd,available,po_00txn_19,paid,2026-09-10,,1873.86,885.2,Automatic payout to bank ****6621
+txn_20,acct_test_maria_bakery,2026-11-11,2026-09-03,payout,po_00txn_20,-3510.89,0.0,-4008.05,usd,pending,po_00txn_20,paid,2026-09-12,,5719.03,739.6,Automatic payout to bank ****6621
+txn_21,acct_test_maria_bakery,2026-10-22,2026-10-26,charge,ch_0txn_21,10.95,9.55,400.09,usd,available,,,,,4220.21,1060.87,Birthday cake pickup
+txn_22,acct_test_maria_bakery,2026-09-26,2026-10-11,charge,ch_0txn_22,29.18,10.73,166.32,usd,available,,,,,1976.85,2467.96,Counter sale - sourdough loaves
+txn_23,acct_test_maria_bakery,2026-10-03,2026-09-20,refund,re_00txn_23,-170.04,0.0,-36.99,usd,available,,,,,1518.14,1431.83,Refund of ch_0txn_23 - item sold out
+txn_24,acct_test_maria_bakery,2026-10-17,2026-11-14,payout,po_00txn_24,-1859.08,0.0,-1860.75,usd,available,po_00txn_24,paid,2026-10-19,,5944.88,995.63,Automatic payout to bank ****6621
+txn_25,acct_test_maria_bakery,2026-11-15,2026-10-10,charge,ch_0txn_25,68.32,4.56,154.5,usd,available,,,,,5333.12,231.17,Morning coffee and croissant
+txn_26,acct_test_maria_bakery,2026-09-21,2026-09-22,payout,po_00txn_26,-3427.82,0.0,-3700.88,usd,available,po_00txn_26,paid,2026-10-11,,1344.25,2843.55,Automatic payout to bank ****6621
+txn_27,acct_test_maria_bakery,2026-10-09,2026-10-24,fee,ch_0txn_27,-9.68,0.0,-1.6,usd,available,,,,,5741.64,5272.59,Stripe processing fee
+txn_28,acct_test_maria_bakery,2026-09-16,2026-11-03,charge,ch_0txn_28,108.0,4.14,301.74,usd,pending,,,,,6265.93,3399.34,Wholesale order - café on Elm St
+txn_29,acct_test_maria_bakery,2026-09-12,2026-09-11,fee,ch_0txn_29,-6.5,0.0,-12.41,usd,available,,,,,3601.37,2444.2,Stripe processing fee
+txn_30,acct_test_maria_bakery,2026-11-14,2026-09-30,charge,ch_0txn_30,56.16,12.47,241.84,usd,available,,,,,1426.43,656.47,Catering order - office breakfast
+txn_31,acct_test_maria_bakery,2026-09-04,2026-11-09,charge,ch_0txn_31,33.27,5.29,90.42,usd,available,,,,,6453.94,1197.19,Counter sale - pastry box
+txn_32,acct_test_maria_bakery,2026-09-14,2026-09-28,charge,ch_0txn_32,142.52,2.34,403.47,usd,pending,,,,,1136.87,2215.66,Catering order - office breakfast
+txn_33,acct_test_maria_bakery,2026-10-25,2026-11-08,charge,ch_0txn_33,251.9,12.46,261.81,usd,pending,,,,,3759.68,5031.84,Counter sale - sourdough loaves
+txn_34,acct_test_maria_bakery,2026-10-14,2026-10-13,fee,ch_0txn_34,-8.77,0.0,-5.27,usd,available,,,,,2670.38,1617.89,Stripe processing fee
+txn_35,acct_test_maria_bakery,2026-09-09,2026-09-13,charge,ch_0txn_35,21.9,2.09,127.76,usd,available,,,,,3133.12,4659.8,Counter sale - pastry box
+txn_36,acct_test_maria_bakery,2026-10-29,2026-10-20,charge,ch_0txn_36,151.05,8.64,329.93,usd,available,,,,,6737.04,4043.73,Counter sale - pastry box
+txn_37,acct_test_maria_bakery,2026-10-08,2026-11-10,payout,po_00txn_37,-1957.36,0.0,-1154.5,usd,available,po_00txn_37,paid,2026-09-04,,4518.95,41.29,Automatic payout to bank ****6621
+txn_38,acct_test_maria_bakery,2026-10-09,2026-11-06,charge,ch_0txn_38,21.75,10.81,385.14,usd,available,,,,,2863.69,4381.8,Counter sale - sourdough loaves
+txn_39,acct_test_maria_bakery,2026-09-21,2026-09-19,charge,ch_0txn_39,19.6,0.96,174.8,usd,available,,,,,5891.11,3884.13,Catering order - office breakfast
+txn_40,acct_test_maria_bakery,2026-09-20,2026-10-18,charge,ch_0txn_40,97.34,1.09,196.04,usd,available,,,,,365.9,3349.27,Catering order - office breakfast
+txn_41,acct_test_maria_bakery,2026-10-12,2026-09-16,fee,ch_0txn_41,-11.27,0.0,-3.17,usd,available,,,,,550.07,3796.38,Stripe processing fee
+txn_42,acct_test_maria_bakery,2026-09-16,2026-10-10,fee,ch_0txn_42,-2.95,0.0,-8.97,usd,available,,,,,6517.69,5311.01,Stripe processing fee
+txn_43,acct_test_maria_bakery,2026-11-06,2026-09-27,charge,ch_0txn_43,112.95,9.57,189.86,usd,available,,,,,651.01,279.28,Counter sale - sourdough loaves
+txn_44,acct_test_maria_bakery,2026-11-02,2026-10-05,payout,po_00txn_44,-3729.12,0.0,-793.96,usd,available,po_00txn_44,paid,2026-09-16,,1118.84,4820.27,Automatic payout to bank ****6621
+txn_45,acct_test_maria_bakery,2026-09-11,2026-09-16,charge,ch_0txn_45,104.92,2.4,389.79,usd,available,,,,,3016.72,2275.22,Wholesale order - café on Elm St
+txn_46,acct_test_maria_bakery,2026-10-12,2026-10-05,charge,ch_0txn_46,33.81,8.8,145.79,usd,available,,,,,5671.3,1275.45,Morning coffee and croissant
+txn_47,acct_test_maria_bakery,2026-09-10,2026-11-18,payout,po_00txn_47,-4193.77,0.0,-1381.41,usd,pending,po_00txn_47,paid,2026-09-05,,6353.04,1288.15,Automatic payout to bank ****6621
+txn_48,acct_test_maria_bakery,2026-09-24,2026-10-31,charge,ch_0txn_48,197.17,3.62,18.59,usd,available,,,,,2377.84,5190.46,Morning coffee and croissant
+txn_49,acct_test_maria_bakery,2026-11-10,2026-10-14,charge,ch_0txn_49,29.7,7.47,70.06,usd,pending,,,,,6438.76,4351.53,Morning coffee and croissant
+txn_50,acct_test_maria_bakery,2026-11-05,2026-10-04,charge,ch_0txn_50,73.1,5.55,25.93,usd,available,,,,,286.65,457.66,Counter sale - sourdough loaves
+txn_51,acct_test_maria_bakery,2026-09-17,2026-10-26,charge,ch_0txn_51,210.28,2.23,176.53,usd,available,,,,,712.3,2424.19,Morning coffee and croissant
+txn_52,acct_test_maria_bakery,2026-11-07,2026-09-10,charge,ch_0txn_52,105.48,9.23,135.86,usd,available,,,,,2100.52,2563.96,Counter sale - pastry box
+txn_53,acct_test_maria_bakery,2026-09-14,2026-10-08,charge,ch_0txn_53,233.76,5.86,167.15,usd,available,,,,,3020.91,1369.05,Wholesale order - café on Elm St
+txn_54,acct_test_maria_bakery,2026-10-14,2026-11-08,charge,ch_0txn_54,169.9,1.56,309.87,usd,available,,,,,5670.66,2447.11,Wholesale order - café on Elm St
+txn_55,acct_test_maria_bakery,2026-09-01,2026-09-30,charge,ch_0txn_55,142.15,2.4,290.34,usd,available,,,,,4659.89,4114.08,Counter sale - pastry box
+txn_56,acct_test_maria_bakery,2026-11-09,2026-10-24,charge,ch_0txn_56,33.69,11.09,23.64,usd,available,,,,,3648.58,3157.46,Wholesale order - café on Elm St
+txn_57,acct_test_maria_bakery,2026-10-27,2026-09-16,fee,ch_0txn_57,-10.66,0.0,-1.59,usd,available,,,,,385.75,4286.39,Stripe processing fee
+txn_58,acct_test_maria_bakery,2026-11-08,2026-10-16,charge,ch_0txn_58,283.79,9.64,34.68,usd,pending,,,,,2030.27,760.49,Birthday cake pickup
+txn_59,acct_test_maria_bakery,2026-09-27,2026-11-10,charge,ch_0txn_59,210.5,11.33,119.01,usd,available,,,,,3928.75,778.68,Counter sale - sourdough loaves
+txn_60,acct_test_maria_bakery,2026-09-16,2026-10-21,charge,ch_0txn_60,37.82,8.52,149.24,usd,available,,,,,2910.46,2595.19,Catering order - office breakfast
+txn_61,acct_test_maria_bakery,2026-11-04,2026-10-13,charge,ch_0txn_61,112.79,2.24,205.91,usd,pending,,,,,1584.5,1944.95,Wholesale order - café on Elm St
+txn_62,acct_test_maria_bakery,2026-09-02,2026-11-09,payout,po_00txn_62,-2506.36,0.0,-1624.32,usd,available,po_00txn_62,paid,2026-09-02,,6797.91,4720.07,Automatic payout to bank ****6621
+txn_63,acct_test_maria_bakery,2026-09-30,2026-09-21,fee,ch_0txn_63,-11.29,0.0,-3.9,usd,available,,,,,2349.13,3513.31,Stripe processing fee
+txn_64,acct_test_maria_bakery,2026-09-19,2026-10-30,payout,po_00txn_64,-3005.77,0.0,-694.99,usd,available,po_00txn_64,paid,2026-11-03,,2740.42,1220.06,Automatic payout to bank ****6621
+txn_65,acct_test_maria_bakery,2026-10-27,2026-09-29,charge,ch_0txn_65,293.56,0.93,261.05,usd,pending,,,,,2568.01,4023.35,Catering order - office breakfast
+txn_66,acct_test_maria_bakery,2026-09-23,2026-10-02,refund,re_00txn_66,-103.26,0.0,-132.22,usd,pending,,,,,2497.92,2496.46,Refund of ch_0txn_66 - duplicate charge
+txn_67,acct_test_maria_bakery,2026-11-06,2026-11-12,payout,po_00txn_67,-2842.23,0.0,-1489.15,usd,available,po_00txn_67,paid,2026-09-08,,1233.0,60.77,Automatic payout to bank ****6621
+txn_68,acct_test_maria_bakery,2026-09-18,2026-09-11,fee,ch_0txn_68,-2.55,0.0,-1.44,usd,available,,,,,2407.7,588.54,Stripe processing fee
+txn_69,acct_test_maria_bakery,2026-10-11,2026-10-14,charge,ch_0txn_69,64.51,6.77,83.57,usd,available,,,,,5935.15,1893.21,Counter sale - pastry box
+txn_70,acct_test_maria_bakery,2026-10-03,2026-10-11,charge,ch_0txn_70,64.3,4.64,292.82,usd,available,,,,,6362.32,427.73,Wholesale order - café on Elm St
+txn_71,acct_test_maria_bakery,2026-11-03,2026-10-29,charge,ch_0txn_71,360.14,6.03,54.72,usd,available,,,,,806.56,4142.77,Wholesale order - café on Elm St
+txn_72,acct_test_maria_bakery,2026-09-28,2026-10-29,refund,re_00txn_72,-123.56,0.0,-113.73,usd,pending,,,,,1810.69,1219.47,Refund of ch_0txn_72 - item sold out
+txn_73,acct_test_maria_bakery,2026-10-16,2026-10-13,payout_cancel,po_00txn_73,868.41,0.0,1188.67,usd,available,po_00txn_73,canceled,2026-11-06,,4171.05,2913.84,Payout canceled - funds returned to Stripe balance
+txn_74,acct_test_maria_bakery,2026-10-05,2026-10-02,charge,ch_0txn_74,45.23,5.49,94.76,usd,pending,,,,,6781.05,74.51,Birthday cake pickup
+txn_75,acct_test_maria_bakery,2026-11-05,2026-10-27,fee,ch_0txn_75,-9.91,0.0,-0.85,usd,available,,,,,1676.59,3880.7,Stripe processing fee
+txn_76,acct_test_maria_bakery,2026-09-29,2026-10-03,charge,ch_0txn_76,185.0,3.32,259.18,usd,available,,,,,1289.69,4380.25,Birthday cake pickup
+txn_77,acct_test_maria_bakery,2026-11-04,2026-10-14,charge,ch_0txn_77,241.36,11.01,69.59,usd,available,,,,,6741.67,766.71,Counter sale - pastry box
+txn_78,acct_test_maria_bakery,2026-11-03,2026-11-14,fee,ch_0txn_78,-10.99,0.0,-9.7,usd,available,,,,,4196.52,750.42,Stripe processing fee
+txn_79,acct_test_maria_bakery,2026-09-14,2026-09-06,charge,ch_0txn_79,125.54,4.22,391.43,usd,available,,,,,1234.2,4751.86,Catering order - office breakfast
+txn_80,acct_test_maria_bakery,2026-11-01,2026-11-11,charge,ch_0txn_80,65.38,7.75,289.19,usd,pending,,,,,5372.7,2098.73,Counter sale - sourdough loaves
+txn_81,acct_test_maria_bakery,2026-09-27,2026-09-07,charge,ch_0txn_81,86.09,5.8,298.15,usd,available,,,,,1879.71,3639.69,Morning coffee and croissant
+txn_82,acct_test_maria_bakery,2026-09-03,2026-10-18,charge,ch_0txn_82,206.84,2.34,16.21,usd,available,,,,,313.36,281.0,Counter sale - pastry box
+txn_83,acct_test_maria_bakery,2026-10-12,2026-09-11,fee,ch_0txn_83,-2.5,0.0,-1.79,usd,available,,,,,3044.17,1959.07,Stripe processing fee
+txn_84,acct_test_maria_bakery,2026-10-13,2026-10-25,charge,ch_0txn_84,283.93,6.91,329.72,usd,pending,,,,,4837.82,4108.7,Birthday cake pickup
+txn_85,acct_test_maria_bakery,2026-09-16,2026-10-25,payout,po_00txn_85,-4194.01,0.0,-854.91,usd,available,po_00txn_85,paid,2026-10-02,,5736.91,4438.73,Automatic payout to bank ****6621
+txn_86,acct_test_maria_bakery,2026-09-03,2026-09-24,fee,ch_0txn_86,-6.87,0.0,-2.12,usd,available,,,,,4329.74,3846.18,Stripe processing fee
+txn_87,acct_test_maria_bakery,2026-10-03,2026-10-16,fee,ch_0txn_87,-12.34,0.0,-12.06,usd,available,,,,,2096.68,848.34,Stripe processing fee
+txn_88,acct_test_maria_bakery,2026-11-04,2026-10-18,charge,ch_0txn_88,84.69,10.13,385.73,usd,available,,,,,3676.77,1584.9,Wholesale order - café on Elm St
+txn_89,acct_test_maria_bakery,2026-09-05,2026-11-10,charge,ch_0txn_89,314.23,0.99,165.66,usd,available,,,,,2454.82,314.18,Morning coffee and croissant
+txn_90,acct_test_maria_bakery,2026-09-05,2026-10-05,fee,ch_0txn_90,-1.35,0.0,-3.35,usd,available,,,,,2717.38,4512.37,Stripe processing fee
+txn_91,acct_test_maria_bakery,2026-09-27,2026-09-17,charge,ch_0txn_91,237.97,11.8,104.6,usd,available,,,,,3692.99,4733.45,Counter sale - pastry box
+txn_92,acct_test_maria_bakery,2026-09-20,2026-10-15,fee,ch_0txn_92,-8.23,0.0,-10.63,usd,available,,,,,2086.42,1612.75,Stripe processing fee
+txn_93,acct_test_maria_bakery,2026-10-22,2026-11-18,charge,ch_0txn_93,8.21,2.21,24.87,usd,available,,,,,6330.41,5124.54,Wholesale order - café on Elm St
+txn_94,acct_test_maria_bakery,2026-10-03,2026-09-27,charge,ch_0txn_94,70.09,10.45,219.53,usd,available,,,,,4401.94,3147.12,Birthday cake pickup
+txn_95,acct_test_maria_bakery,2026-11-09,2026-10-22,fee,ch_0txn_95,-10.46,0.0,-3.16,usd,pending,,,,,2014.93,1423.9,Stripe processing fee
+txn_96,acct_test_maria_bakery,2026-10-14,2026-09-27,fee,ch_0txn_96,-5.98,0.0,-3.5,usd,available,,,,,4546.5,4991.05,Stripe processing fee
+txn_97,acct_test_maria_bakery,2026-10-17,2026-11-01,payout,po_00txn_97,-2670.67,0.0,-1273.09,usd,pending,po_00txn_97,paid,2026-09-22,,4673.72,3421.67,Automatic payout to bank ****6621
+txn_98,acct_test_maria_bakery,2026-09-03,2026-10-04,charge,ch_0txn_98,69.07,11.82,378.55,usd,available,,,,,3130.4,4028.03,Wholesale order - café on Elm St
+txn_99,acct_test_maria_bakery,2026-11-05,2026-09-15,payout,po_00txn_99,-3229.8,0.0,-2557.02,usd,available,po_00txn_99,paid,2026-10-17,,4204.43,525.77,Automatic payout to bank ****6621
+txn_100,acct_test_maria_bakery,2026-11-03,2026-09-04,fee,ch_0txn_100,-6.35,0.0,-3.19,usd,available,,,,,2738.59,4757.59,Stripe processing fee
+txn_101,acct_test_maria_bakery,2026-11-14,2026-11-01,charge,ch_0txn_101,148.08,3.86,336.7,usd,available,,,,,6274.12,765.42,Counter sale - sourdough loaves
+txn_102,acct_test_maria_bakery,2026-11-12,2026-10-17,charge,ch_0txn_102,49.38,1.85,223.97,usd,available,,,,,6322.08,4569.53,Counter sale - sourdough loaves
+txn_103,acct_test_maria_bakery,2026-10-11,2026-10-23,payout,po_00txn_103,-3316.21,0.0,-3632.17,usd,pending,po_00txn_103,paid,2026-09-19,,6205.63,3820.48,Automatic payout to bank ****6621
+txn_104,acct_test_maria_bakery,2026-11-06,2026-09-08,fee,ch_0txn_104,-3.19,0.0,-5.47,usd,available,,,,,3872.65,4399.28,Stripe processing fee
+txn_105,acct_test_maria_bakery,2026-10-04,2026-10-14,fee,ch_0txn_105,-6.1,0.0,-7.02,usd,pending,,,,,5181.87,2445.7,Stripe processing fee
+txn_106,acct_test_maria_bakery,2026-09-05,2026-11-16,charge,ch_0txn_106,287.11,4.31,386.67,usd,available,,,,,5410.27,3314.38,Wholesale order - café on Elm St
+txn_107,acct_test_maria_bakery,2026-11-06,2026-09-23,fee,ch_0txn_107,-9.18,0.0,-5.98,usd,pending,,,,,2433.5,4397.48,Stripe processing fee
+txn_108,acct_test_maria_bakery,2026-09-14,2026-10-27,refund,re_00txn_108,-148.92,0.0,-119.17,usd,pending,,,,,4383.18,769.54,Refund of ch_0txn_108 - wrong order
+txn_109,acct_test_maria_bakery,2026-09-24,2026-09-19,charge,ch_0txn_109,17.2,8.24,287.36,usd,available,,,,,6212.62,3258.41,Catering order - office breakfast
+txn_110,acct_test_maria_bakery,2026-09-22,2026-10-18,payout,po_00txn_110,-3311.68,0.0,-1874.05,usd,available,po_00txn_110,paid,2026-11-13,,5796.46,2471.5,Automatic payout to bank ****6621
+txn_111,acct_test_maria_bakery,2026-09-04,2026-10-31,fee,ch_0txn_111,-3.2,0.0,-11.34,usd,available,,,,,291.89,2204.17,Stripe processing fee
+txn_112,acct_test_maria_bakery,2026-10-12,2026-10-31,fee,ch_0txn_112,-9.18,0.0,-6.07,usd,available,,,,,5361.7,5000.52,Stripe processing fee
+txn_113,acct_test_maria_bakery,2026-11-06,2026-09-15,fee,ch_0txn_113,-10.3,0.0,-6.84,usd,available,,,,,6195.22,3392.85,Stripe processing fee
+txn_114,acct_test_maria_bakery,2026-09-05,2026-09-03,charge,ch_0txn_114,322.86,8.85,71.72,usd,available,,,,,1207.19,3683.93,Birthday cake pickup
+txn_115,acct_test_maria_bakery,2026-10-13,2026-09-06,charge,ch_0txn_115,17.2,3.4,120.2,usd,available,,,,,1733.94,1251.58,Wholesale order - café on Elm St
+txn_116,acct_test_maria_bakery,2026-10-30,2026-10-19,payout,po_00txn_116,-3365.54,0.0,-3575.76,usd,available,po_00txn_116,paid,2026-09-24,,6799.21,144.57,Automatic payout to bank ****6621
+txn_117,acct_test_maria_bakery,2026-11-05,2026-09-03,charge,ch_0txn_117,150.78,2.29,68.75,usd,available,,,,,5388.22,2284.43,Birthday cake pickup
+txn_118,acct_test_maria_bakery,2026-10-13,2026-10-04,payout,po_00txn_118,-3044.31,0.0,-3918.76,usd,available,po_00txn_118,paid,2026-10-27,,6106.43,1356.66,Automatic payout to bank ****6621
+txn_119,acct_test_maria_bakery,2026-09-29,2026-10-23,charge,ch_0txn_119,100.09,7.48,342.13,usd,pending,,,,,6035.51,2032.83,Counter sale - sourdough loaves
+txn_120,acct_test_maria_bakery,2026-10-31,2026-10-03,charge,ch_0txn_120,269.94,5.2,258.22,usd,available,,,,,5819.54,812.95,Wholesale order - café on Elm St
+txn_121,acct_test_maria_bakery,2026-09-04,2026-10-26,fee,ch_0txn_121,-9.54,0.0,-6.97,usd,available,,,,,1277.9,2582.56,Stripe processing fee
+txn_122,acct_test_maria_bakery,2026-11-15,2026-10-09,fee,ch_0txn_122,-3.6,0.0,-4.96,usd,available,,,,,4341.29,4078.39,Stripe processing fee
+txn_123,acct_test_maria_bakery,2026-10-03,2026-09-25,fee,ch_0txn_123,-10.57,0.0,-9.01,usd,available,,,,,4686.78,1482.21,Stripe processing fee
+txn_124,acct_test_maria_bakery,2026-10-15,2026-09-20,charge,ch_0txn_124,43.69,5.68,167.0,usd,available,,,,,4876.62,3689.21,Wholesale order - café on Elm St
+txn_125,acct_test_maria_bakery,2026-11-09,2026-11-12,charge,ch_0txn_125,53.22,3.26,217.84,usd,pending,,,,,2523.88,4766.83,Catering order - office breakfast
+txn_126,acct_test_maria_bakery,2026-10-07,2026-10-15,fee,ch_0txn_126,-6.21,0.0,-10.6,usd,available,,,,,6590.74,2897.58,Stripe processing fee
+txn_127,acct_test_maria_bakery,2026-10-19,2026-11-13,charge,ch_0txn_127,86.95,11.87,212.33,usd,pending,,,,,6772.44,4397.37,Catering order - office breakfast
+txn_128,acct_test_maria_bakery,2026-09-20,2026-09-21,charge,ch_0txn_128,193.16,8.27,89.49,usd,available,,,,,6678.45,635.95,Catering order - office breakfast
+txn_129,acct_test_maria_bakery,2026-09-22,2026-10-21,charge,ch_0txn_129,10.17,11.19,334.84,usd,available,,,,,869.13,2466.09,Birthday cake pickup
+txn_130,acct_test_maria_bakery,2026-10-03,2026-11-04,fee,ch_0txn_130,-3.84,0.0,-2.57,usd,available,,,,,5844.85,4975.57,Stripe processing fee
+txn_131,acct_test_maria_bakery,2026-09-04,2026-09-24,payout,po_00txn_131,-2759.7,0.0,-1473.69,usd,available,po_00txn_131,paid,2026-10-21,,1289.38,2403.56,Automatic payout to bank ****6621
+txn_132,acct_test_maria_bakery,2026-10-19,2026-09-14,refund,re_00txn_132,-149.05,0.0,-103.47,usd,available,,,,,827.01,4505.74,Refund of ch_0txn_132 - item sold out
+txn_133,acct_test_maria_bakery,2026-11-10,2026-10-23,charge,ch_0txn_133,58.42,4.88,128.56,usd,available,,,,,6246.76,2489.1,Counter sale - sourdough loaves
+txn_134,acct_test_maria_bakery,2026-11-01,2026-10-23,charge,ch_0txn_134,145.51,3.7,99.4,usd,available,,,,,1088.12,4391.59,Counter sale - pastry box
+txn_135,acct_test_maria_bakery,2026-09-08,2026-09-20,charge,ch_0txn_135,9.46,10.83,231.05,usd,available,,,,,3410.8,3740.66,Wholesale order - café on Elm St
+txn_136,acct_test_maria_bakery,2026-11-11,2026-10-17,payout,po_00txn_136,-1724.26,0.0,-3269.5,usd,available,po_00txn_136,paid,2026-09-03,,3445.94,5115.41,Automatic payout to bank ****6621
+txn_137,acct_test_maria_bakery,2026-09-12,2026-09-12,charge,ch_0txn_137,57.59,4.92,160.09,usd,available,,,,,1690.33,5056.38,Catering order - office breakfast
+txn_138,acct_test_maria_bakery,2026-11-01,2026-10-18,charge,ch_0txn_138,250.7,1.96,149.64,usd,pending,,,,,1670.51,3841.85,Catering order - office breakfast
+txn_139,acct_test_maria_bakery,2026-10-16,2026-10-28,charge,ch_0txn_139,221.27,9.07,120.81,usd,available,,,,,6158.93,686.56,Counter sale - pastry box
+txn_140,acct_test_maria_bakery,2026-10-15,2026-10-04,fee,ch_0txn_140,-8.99,0.0,-7.89,usd,available,,,,,3565.0,5293.02,Stripe processing fee
+txn_141,acct_test_maria_bakery,2026-10-22,2026-11-06,charge,ch_0txn_141,78.89,8.7,44.21,usd,available,,,,,6075.01,1258.75,Wholesale order - café on Elm St
+txn_142,acct_test_maria_bakery,2026-09-07,2026-11-15,fee,ch_0txn_142,-11.93,0.0,-8.58,usd,available,,,,,5451.45,1991.87,Stripe processing fee
+txn_143,acct_test_maria_bakery,2026-09-06,2026-09-04,charge,ch_0txn_143,35.64,10.35,250.12,usd,pending,,,,,692.4,2538.24,Counter sale - sourdough loaves
+txn_144,acct_test_maria_bakery,2026-11-06,2026-10-26,charge,ch_0txn_144,307.91,3.24,173.82,usd,available,,,,,152.46,1166.16,Counter sale - sourdough loaves
+txn_145,acct_test_maria_bakery,2026-10-05,2026-09-06,charge,ch_0txn_145,248.67,8.62,264.08,usd,available,,,,,762.14,5106.21,Catering order - office breakfast
+txn_146,acct_test_maria_bakery,2026-09-14,2026-10-07,charge,ch_0txn_146,166.3,8.4,159.19,usd,available,,,,,4539.18,1120.88,Birthday cake pickup
+txn_147,acct_test_maria_bakery,2026-11-04,2026-09-18,charge,ch_0txn_147,34.51,11.2,195.6,usd,available,,,,,2409.77,2270.93,Wholesale order - café on Elm St
+txn_148,acct_test_maria_bakery,2026-09-11,2026-11-14,charge,ch_0txn_148,115.51,4.73,317.95,usd,available,,,,,3122.54,4799.83,Birthday cake pickup
+txn_149,acct_test_maria_bakery,2026-10-22,2026-10-30,charge,ch_0txn_149,63.96,6.21,98.84,usd,available,,,,,4494.4,3253.04,Counter sale - pastry box
+txn_150,acct_test_maria_bakery,2026-11-06,2026-09-14,charge,ch_0txn_150,324.43,2.38,22.1,usd,pending,,,,,5504.34,4144.41,Wholesale order - café on Elm St
+txn_151,acct_test_maria_bakery,2026-10-20,2026-09-27,charge,ch_0txn_151,44.09,1.09,387.21,usd,available,,,,,2404.11,4112.74,Birthday cake pickup
+txn_152,acct_test_maria_bakery,2026-09-25,2026-10-14,charge,ch_0txn_152,40.64,8.76,205.07,usd,available,,,,,6326.56,3245.62,Counter sale - sourdough loaves
+txn_153,acct_test_maria_bakery,2026-10-02,2026-11-04,payout,po_00txn_153,-2915.91,0.0,-4032.36,usd,available,po_00txn_153,paid,2026-09-30,,4544.53,624.53,Automatic payout to bank ****6621
+txn_154,acct_test_maria_bakery,2026-10-07,2026-10-16,charge,ch_0txn_154,43.12,7.19,150.23,usd,available,,,,,3068.68,3594.93,Wholesale order - café on Elm St
+txn_155,acct_test_maria_bakery,2026-09-09,2026-09-21,charge,ch_0txn_155,214.68,11.93,165.26,usd,available,,,,,3744.96,4821.78,Catering order - office breakfast
+txn_156,acct_test_maria_bakery,2026-09-06,2026-09-05,charge,ch_0txn_156,262.52,7.53,357.49,usd,available,,,,,1549.61,62.19,Catering order - office breakfast
+txn_157,acct_test_maria_bakery,2026-09-18,2026-11-09,refund,re_00txn_157,-151.69,0.0,-168.9,usd,available,,,,,5007.7,4072.26,Refund of ch_0txn_157 - wrong order
+txn_158,acct_test_maria_bakery,2026-10-24,2026-10-19,charge,ch_0txn_158,221.28,3.39,395.17,usd,available,,,,,5892.98,2787.8,Counter sale - pastry box
+txn_159,acct_test_maria_bakery,2026-10-30,2026-10-06,charge,ch_0txn_159,70.03,10.55,95.34,usd,available,,,,,3520.31,1861.18,Birthday cake pickup
+txn_160,acct_test_maria_bakery,2026-10-04,2026-09-14,charge,ch_0txn_160,168.36,7.26,32.76,usd,pending,,,,,3338.28,1752.18,Catering order - office breakfast
+txn_161,acct_test_maria_bakery,2026-09-04,2026-09-17,charge,ch_0txn_161,218.85,11.11,55.03,usd,available,,,,,361.41,1497.89,Wholesale order - café on Elm St
+txn_162,acct_test_maria_bakery,2026-09-15,2026-10-17,charge,ch_0txn_162,211.97,7.0,31.28,usd,available,,,,,242.79,4907.08,Counter sale - sourdough loaves
+txn_163,acct_test_maria_bakery,2026-10-04,2026-10-15,charge,ch_0txn_163,163.85,5.52,324.14,usd,available,,,,,3943.85,2830.96,Birthday cake pickup
+txn_164,acct_test_maria_bakery,2026-09-17,2026-11-04,charge,ch_0txn_164,87.15,7.2,290.78,usd,pending,,,,,4763.0,5195.63,Wholesale order - café on Elm St
+txn_165,acct_test_maria_bakery,2026-09-26,2026-10-29,charge,ch_0txn_165,202.29,11.22,397.52,usd,available,,,,,1485.27,2536.31,Morning coffee and croissant
+txn_166,acct_test_maria_bakery,2026-09-17,2026-10-08,charge,ch_0txn_166,25.53,10.32,130.93,usd,available,,,,,6468.42,228.18,Birthday cake pickup
+txn_167,acct_test_maria_bakery,2026-09-02,2026-10-10,fee,ch_0txn_167,-6.94,0.0,-6.35,usd,available,,,,,3136.45,2262.35,Stripe processing fee
+txn_168,acct_test_maria_bakery,2026-09-16,2026-09-13,charge,ch_0txn_168,396.36,2.61,103.96,usd,available,,,,,4796.57,208.01,Counter sale - sourdough loaves
+txn_169,acct_test_maria_bakery,2026-10-05,2026-09-12,payout,po_00txn_169,-3531.96,0.0,-429.94,usd,available,po_00txn_169,paid,2026-11-07,,1081.12,3240.72,Automatic payout to bank ****6621
+txn_170,acct_test_maria_bakery,2026-10-24,2026-10-08,charge,ch_0txn_170,328.62,11.41,220.84,usd,pending,,,,,4859.97,2310.79,Counter sale - pastry box
+txn_171,acct_test_maria_bakery,2026-11-06,2026-09-09,charge,ch_0txn_171,96.56,3.38,130.9,usd,pending,,,,,6162.55,5187.2,Counter sale - sourdough loaves
+txn_172,acct_test_maria_bakery,2026-10-17,2026-11-09,charge,ch_0txn_172,128.62,3.74,180.26,usd,available,,,,,6313.8,920.28,Birthday cake pickup
+txn_173,acct_test_maria_bakery,2026-10-16,2026-09-28,charge,ch_0txn_173,235.26,9.96,82.02,usd,pending,,,,,3768.73,1011.5,Catering order - office breakfast
+txn_174,acct_test_maria_bakery,2026-10-24,2026-09-23,charge,ch_0txn_174,277.91,7.48,74.7,usd,available,,,,,6717.71,1644.71,Catering order - office breakfast
+txn_175,acct_test_maria_bakery,2026-09-03,2026-10-31,fee,ch_0txn_175,-12.12,0.0,-6.43,usd,available,,,,,3695.9,2683.46,Stripe processing fee
+txn_176,acct_test_maria_bakery,2026-09-12,2026-11-10,charge,ch_0txn_176,10.18,9.46,104.76,usd,available,,,,,4632.76,5317.92,Morning coffee and croissant
+txn_177,acct_test_maria_bakery,2026-10-21,2026-10-06,fee,ch_0txn_177,-8.22,0.0,-2.2,usd,available,,,,,506.84,4376.82,Stripe processing fee
+txn_178,acct_test_maria_bakery,2026-10-02,2026-10-30,fee,ch_0txn_178,-8.09,0.0,-9.03,usd,available,,,,,2485.48,1958.77,Stripe processing fee
+txn_179,acct_test_maria_bakery,2026-11-04,2026-10-05,charge,ch_0txn_179,238.96,11.71,350.08,usd,available,,,,,2406.86,1655.61,Counter sale - pastry box
+txn_180,acct_test_maria_bakery,2026-10-31,2026-10-10,payout,po_00txn_180,-3456.35,0.0,-2734.28,usd,available,po_00txn_180,paid,2026-11-13,,5757.92,1052.02,Automatic payout to bank ****6621
+txn_181,acct_test_maria_bakery,2026-10-04,2026-11-07,charge,ch_0txn_181,239.34,6.71,367.96,usd,available,,,,,3517.0,4469.11,Wholesale order - café on Elm St
+txn_182,acct_test_maria_bakery,2026-10-14,2026-10-06,charge,ch_0txn_182,293.92,6.82,323.66,usd,available,,,,,1859.0,3745.77,Counter sale - sourdough loaves
+txn_183,acct_test_maria_bakery,2026-09-26,2026-11-18,charge,ch_0txn_183,360.29,11.8,338.08,usd,available,,,,,6107.92,3353.3,Catering order - office breakfast
+txn_184,acct_test_maria_bakery,2026-10-17,2026-10-07,charge,ch_0txn_184,12.28,11.48,74.49,usd,pending,,,,,6549.38,1305.69,Wholesale order - café on Elm St
+txn_185,acct_test_maria_bakery,2026-10-17,2026-10-18,charge,ch_0txn_185,227.67,8.89,315.09,usd,available,,,,,3685.76,1930.95,Counter sale - pastry box
+txn_186,acct_test_maria_bakery,2026-10-20,2026-09-28,charge,ch_0txn_186,127.6,2.34,244.32,usd,available,,,,,4322.68,4920.54,Counter sale - pastry box
+txn_187,acct_test_maria_bakery,2026-09-01,2026-09-09,charge,ch_0txn_187,175.0,8.28,61.7,usd,available,,,,,2213.56,3432.55,Catering order - office breakfast
+txn_188,acct_test_maria_bakery,2026-09-25,2026-09-10,charge,ch_0txn_188,79.29,12.24,306.66,usd,available,,,,,3350.31,4932.5,Morning coffee and croissant
+txn_189,acct_test_maria_bakery,2026-09-10,2026-10-31,fee,ch_0txn_189,-4.33,0.0,-5.79,usd,available,,,,,3127.81,3636.25,Stripe processing fee
+txn_190,acct_test_maria_bakery,2026-09-17,2026-09-17,charge,ch_0txn_190,254.54,9.45,200.6,usd,available,,,,,815.05,4136.89,Morning coffee and croissant
+txn_191,acct_test_maria_bakery,2026-10-06,2026-09-17,refund,re_00txn_191,-179.32,0.0,-16.42,usd,pending,,,,,6057.56,2227.43,Refund of ch_0txn_191 - item sold out
+txn_192,acct_test_maria_bakery,2026-09-04,2026-10-13,refund,re_00txn_192,-172.69,0.0,-82.69,usd,pending,,,,,473.9,2250.58,Refund of ch_0txn_192 - wrong order
+txn_193,acct_test_maria_bakery,2026-09-07,2026-11-18,fee,ch_0txn_193,-8.46,0.0,-7.62,usd,pending,,,,,6505.5,5319.92,Stripe processing fee
+txn_194,acct_test_maria_bakery,2026-10-28,2026-11-11,charge,ch_0txn_194,174.26,7.56,74.84,usd,available,,,,,3272.86,1475.79,Counter sale - pastry box
+txn_195,acct_test_maria_bakery,2026-10-22,2026-09-04,payout,po_00txn_195,-3007.7,0.0,-826.62,usd,available,po_00txn_195,paid,2026-11-05,,1044.97,5373.88,Automatic payout to bank ****6621
+txn_196,acct_test_maria_bakery,2026-09-01,2026-10-14,fee,ch_0txn_196,-8.29,0.0,-8.02,usd,available,,,,,2356.55,2640.58,Stripe processing fee
+txn_197,acct_test_maria_bakery,2026-09-11,2026-10-13,charge,ch_0txn_197,141.24,7.12,215.17,usd,pending,,,,,1105.76,2181.92,Birthday cake pickup
+txn_198,acct_test_maria_bakery,2026-10-11,2026-09-21,payout,po_00txn_198,-3887.2,0.0,-2023.96,usd,available,po_00txn_198,paid,2026-10-17,,6389.78,4699.75,Automatic payout to bank ****6621
+txn_199,acct_test_maria_bakery,2026-10-22,2026-11-17,fee,ch_0txn_199,-8.88,0.0,-6.47,usd,available,,,,,5347.99,2001.68,Stripe processing fee
+txn_200,acct_test_maria_bakery,2026-10-02,2026-11-15,charge,ch_0txn_200,92.46,9.69,105.1,usd,available,,,,,3526.93,5263.54,Birthday cake pickup
+txn_201,acct_test_maria_bakery,2026-10-16,2026-09-08,payout,po_00txn_201,-3475.6,0.0,-1289.5,usd,pending,po_00txn_201,paid,2026-10-02,,4501.43,2598.95,Automatic payout to bank ****6621
+txn_202,acct_test_maria_bakery,2026-09-21,2026-09-08,fee,ch_0txn_202,-8.76,0.0,-10.52,usd,available,,,,,2063.76,4749.82,Stripe processing fee
+txn_203,acct_test_maria_bakery,2026-09-28,2026-09-06,fee,ch_0txn_203,-7.98,0.0,-8.57,usd,available,,,,,5266.84,4676.77,Stripe processing fee
+txn_204,acct_test_maria_bakery,2026-11-05,2026-10-27,charge,ch_0txn_204,95.85,3.41,109.52,usd,available,,,,,4054.58,5012.85,Morning coffee and croissant
+txn_205,acct_test_maria_bakery,2026-10-29,2026-10-03,charge,ch_0txn_205,80.77,2.25,311.8,usd,available,,,,,3717.88,3848.12,Counter sale - sourdough loaves
+txn_206,acct_test_maria_bakery,2026-10-28,2026-11-03,charge,ch_0txn_206,159.53,7.76,291.79,usd,available,,,,,3453.28,1167.15,Wholesale order - café on Elm St
+txn_207,acct_test_maria_bakery,2026-10-05,2026-11-07,charge,ch_0txn_207,79.09,0.78,84.35,usd,available,,,,,5677.94,4579.39,Wholesale order - café on Elm St
+txn_208,acct_test_maria_bakery,2026-09-11,2026-10-05,charge,ch_0txn_208,106.17,4.28,277.29,usd,pending,,,,,5959.68,2105.57,Counter sale - sourdough loaves
+txn_209,acct_test_maria_bakery,2026-09-08,2026-10-15,payout,po_00txn_209,-2738.9,0.0,-3010.82,usd,pending,po_00txn_209,paid,2026-09-13,,4979.16,5375.91,Automatic payout to bank ****6621
+txn_210,acct_test_maria_bakery,2026-11-04,2026-09-05,fee,ch_0txn_210,-3.03,0.0,-0.56,usd,pending,,,,,1712.26,261.1,Stripe processing fee
+txn_211,acct_test_maria_bakery,2026-10-10,2026-09-14,fee,ch_0txn_211,-6.96,0.0,-5.59,usd,pending,,,,,4213.92,5177.04,Stripe processing fee
+txn_212,acct_test_maria_bakery,2026-10-06,2026-10-10,charge,ch_0txn_212,156.31,3.23,59.52,usd,available,,,,,3448.45,1666.7,Catering order - office breakfast
+txn_213,acct_test_maria_bakery,2026-10-05,2026-09-29,charge,ch_0txn_213,353.65,2.7,356.08,usd,available,,,,,3726.52,2611.42,Counter sale - pastry box
+txn_214,acct_test_maria_bakery,2026-10-05,2026-09-13,payout,po_00txn_214,-2106.79,0.0,-4184.33,usd,available,po_00txn_214,paid,2026-09-02,,2931.01,819.74,Automatic payout to bank ****6621
+txn_215,acct_test_maria_bakery,2026-11-04,2026-10-13,payout,po_00txn_215,-3187.99,0.0,-2496.03,usd,pending,po_00txn_215,paid,2026-09-26,,817.55,2667.17,Automatic payout to bank ****6621
+txn_216,acct_test_maria_bakery,2026-11-08,2026-11-17,payout,po_00txn_216,-3603.79,0.0,-3525.48,usd,available,po_00txn_216,paid,2026-09-19,,4909.45,4960.07,Automatic payout to bank ****6621
+txn_217,acct_test_maria_bakery,2026-09-19,2026-10-27,charge,ch_0txn_217,218.74,2.65,34.81,usd,available,,,,,2324.89,2783.64,Morning coffee and croissant
+txn_218,acct_test_maria_bakery,2026-10-20,2026-10-22,charge,ch_0txn_218,178.38,4.18,185.14,usd,available,,,,,6724.2,1166.32,Counter sale - pastry box
+txn_219,acct_test_maria_bakery,2026-10-21,2026-09-14,charge,ch_0txn_219,33.86,8.58,307.62,usd,available,,,,,1490.05,1330.21,Birthday cake pickup
+txn_220,acct_test_maria_bakery,2026-10-19,2026-10-25,charge,ch_0txn_220,136.24,3.14,43.8,usd,pending,,,,,812.6,738.01,Counter sale - pastry box
+txn_221,acct_test_maria_bakery,2026-11-10,2026-11-15,charge,ch_0txn_221,159.68,10.86,373.13,usd,available,,,,,3284.4,3418.42,Counter sale - sourdough loaves
+txn_222,acct_test_maria_bakery,2026-10-15,2026-10-17,payout,po_00txn_222,-2451.5,0.0,-3439.25,usd,available,po_00txn_222,paid,2026-09-20,,1723.4,2569.06,Automatic payout to bank ****6621
+txn_223,acct_test_maria_bakery,2026-10-08,2026-10-23,charge,ch_0txn_223,275.67,1.59,57.27,usd,available,,,,,4223.82,3545.82,Counter sale - pastry box
+txn_224,acct_test_maria_bakery,2026-09-18,2026-10-25,payout,po_00txn_224,-1806.54,0.0,-3645.69,usd,pending,po_00txn_224,paid,2026-09-20,,919.77,1763.07,Automatic payout to bank ****6621
+txn_225,acct_test_maria_bakery,2026-10-17,2026-09-27,charge,ch_0txn_225,134.99,5.59,298.1,usd,available,,,,,385.93,2403.1,Morning coffee and croissant
+txn_226,acct_test_maria_bakery,2026-09-20,2026-11-09,charge,ch_0txn_226,87.82,7.53,358.4,usd,available,,,,,5078.06,665.91,Counter sale - pastry box
+txn_227,acct_test_maria_bakery,2026-09-18,2026-10-29,payout,po_00txn_227,-1317.05,0.0,-3049.32,usd,available,po_00txn_227,paid,2026-09-14,,821.65,1356.62,Automatic payout to bank ****6621
+txn_228,acct_test_maria_bakery,2026-09-04,2026-11-17,charge,ch_0txn_228,208.76,3.6,232.73,usd,available,,,,,1729.97,693.77,Birthday cake pickup
+txn_229,acct_test_maria_bakery,2026-11-06,2026-09-23,payout,po_00txn_229,-4174.59,0.0,-1885.87,usd,available,po_00txn_229,paid,2026-09-21,,5790.74,4385.1,Automatic payout to bank ****6621
+txn_230,acct_test_maria_bakery,2026-09-09,2026-09-16,charge,ch_0txn_230,167.02,7.43,110.74,usd,available,,,,,426.0,440.61,Wholesale order - café on Elm St
+txn_231,acct_test_maria_bakery,2026-09-08,2026-10-17,charge,ch_0txn_231,98.35,0.79,126.17,usd,available,,,,,5311.39,3216.09,Counter sale - pastry box
+txn_232,acct_test_maria_bakery,2026-10-02,2026-11-08,charge,ch_0txn_232,353.67,0.66,107.74,usd,available,,,,,3792.32,732.35,Morning coffee and croissant
+txn_233,acct_test_maria_bakery,2026-11-12,2026-11-10,payout,po_00txn_233,-3575.19,0.0,-1752.61,usd,available,po_00txn_233,paid,2026-10-11,,713.15,816.97,Automatic payout to bank ****6621
+txn_234,acct_test_maria_bakery,2026-10-20,2026-10-30,charge,ch_0txn_234,131.72,9.75,194.96,usd,pending,,,,,5094.89,1083.36,Counter sale - sourdough loaves
+txn_235,acct_test_maria_bakery,2026-10-05,2026-09-16,fee,ch_0txn_235,-11.25,0.0,-9.32,usd,available,,,,,4197.7,1477.19,Stripe processing fee
+txn_236,acct_test_maria_bakery,2026-09-02,2026-09-29,charge,ch_0txn_236,178.9,5.74,136.63,usd,available,,,,,1430.38,2239.23,Counter sale - pastry box
+txn_237,acct_test_maria_bakery,2026-09-16,2026-10-04,charge,ch_0txn_237,112.07,8.74,149.23,usd,pending,,,,,2877.39,3170.66,Counter sale - sourdough loaves
+txn_238,acct_test_maria_bakery,2026-11-11,2026-10-30,charge,ch_0txn_238,327.53,6.8,288.14,usd,available,,,,,1729.0,3454.7,Counter sale - sourdough loaves
+txn_239,acct_test_maria_bakery,2026-10-24,2026-09-10,fee,ch_0txn_239,-8.08,0.0,-6.18,usd,available,,,,,4657.23,40.72,Stripe processing fee
+txn_240,acct_test_maria_bakery,2026-09-01,2026-09-14,charge,ch_0txn_240,115.1,2.9,157.42,usd,available,,,,,3217.14,2965.8,Wholesale order - café on Elm St
+txn_241,acct_test_maria_bakery,2026-10-22,2026-09-04,charge,ch_0txn_241,82.67,3.01,225.64,usd,available,,,,,2153.24,535.93,Birthday cake pickup
+txn_242,acct_test_maria_bakery,2026-10-07,2026-09-10,charge,ch_0txn_242,188.4,5.84,73.79,usd,available,,,,,5665.96,939.45,Catering order - office breakfast
+txn_243,acct_test_maria_bakery,2026-11-13,2026-09-06,charge,ch_0txn_243,338.41,1.73,40.6,usd,available,,,,,1537.59,3916.84,Counter sale - pastry box
+txn_244,acct_test_maria_bakery,2026-10-30,2026-11-18,charge,ch_0txn_244,48.42,8.18,10.75,usd,available,,,,,6447.28,1292.66,Morning coffee and croissant
+txn_245,acct_test_maria_bakery,2026-11-05,2026-10-13,charge,ch_0txn_245,277.63,9.11,108.86,usd,available,,,,,1239.33,4751.67,Wholesale order - café on Elm St
+txn_246,acct_test_maria_bakery,2026-10-12,2026-09-05,charge,ch_0txn_246,185.34,0.78,48.23,usd,available,,,,,5593.37,1016.69,Wholesale order - café on Elm St
+txn_247,acct_test_maria_bakery,2026-10-13,2026-11-12,charge,ch_0txn_247,104.6,6.11,389.35,usd,available,,,,,229.21,3079.66,Counter sale - sourdough loaves
+txn_248,acct_test_maria_bakery,2026-11-02,2026-09-19,refund,re_00txn_248,-116.45,0.0,-108.08,usd,available,,,,,4920.99,1877.03,Refund of ch_0txn_248 - wrong order
+txn_249,acct_test_maria_bakery,2026-09-26,2026-10-10,fee,ch_0txn_249,-9.41,0.0,-9.1,usd,pending,,,,,722.39,2070.99,Stripe processing fee
+txn_250,acct_test_maria_bakery,2026-10-19,2026-10-02,charge,ch_0txn_250,144.79,8.03,261.86,usd,available,,,,,1174.15,3655.75,Wholesale order - café on Elm St
+txn_251,acct_test_maria_bakery,2026-10-21,2026-11-17,fee,ch_0txn_251,-9.24,0.0,-7.48,usd,pending,,,,,4447.93,950.81,Stripe processing fee
+txn_252,acct_test_maria_bakery,2026-10-25,2026-10-29,payout,po_00txn_252,-4071.13,0.0,-2924.11,usd,available,po_00txn_252,paid,2026-11-04,,5983.7,4197.97,Automatic payout to bank ****6621
+txn_253,acct_test_maria_bakery,2026-09-05,2026-10-02,refund,re_00txn_253,-179.17,0.0,-26.79,usd,available,,,,,4639.92,1002.2,Refund of ch_0txn_253 - item sold out
+txn_254,acct_test_maria_bakery,2026-10-27,2026-10-12,payout,po_00txn_254,-3879.86,0.0,-749.76,usd,available,po_00txn_254,paid,2026-10-08,,5029.2,1676.2,Automatic payout to bank ****6621
+txn_255,acct_test_maria_bakery,2026-09-05,2026-11-17,fee,ch_0txn_255,-6.38,0.0,-3.32,usd,available,,,,,2103.17,5024.96,Stripe processing fee
+txn_256,acct_test_maria_bakery,2026-10-10,2026-11-12,payout,po_00txn_256,-1705.35,0.0,-4035.75,usd,pending,po_00txn_256,paid,2026-10-11,,535.7,217.39,Automatic payout to bank ****6621
+txn_257,acct_test_maria_bakery,2026-09-20,2026-11-18,payout,po_00txn_257,-2629.76,0.0,-4122.16,usd,available,po_00txn_257,paid,2026-09-11,,4864.83,3296.34,Automatic payout to bank ****6621
+txn_258,acct_test_maria_bakery,2026-09-26,2026-09-15,payout,po_00txn_258,-4042.19,0.0,-890.54,usd,pending,po_00txn_258,paid,2026-09-19,,5836.0,3952.1,Automatic payout to bank ****6621
+txn_259,acct_test_maria_bakery,2026-11-05,2026-09-19,charge,ch_0txn_259,206.09,7.14,45.16,usd,available,,,,,2664.63,2032.66,Morning coffee and croissant
+txn_260,acct_test_maria_bakery,2026-11-11,2026-11-15,charge,ch_0txn_260,61.34,8.82,68.49,usd,available,,,,,5319.65,1992.92,Morning coffee and croissant
+txn_261,acct_test_maria_bakery,2026-10-16,2026-11-06,charge,ch_0txn_261,8.26,3.61,280.41,usd,available,,,,,6156.46,1038.11,Wholesale order - café on Elm St
+txn_262,acct_test_maria_bakery,2026-11-01,2026-09-19,charge,ch_0txn_262,243.92,10.95,76.38,usd,available,,,,,5557.98,1774.04,Catering order - office breakfast
+txn_263,acct_test_maria_bakery,2026-09-13,2026-11-06,fee,ch_0txn_263,-7.78,0.0,-4.88,usd,available,,,,,4741.1,1930.05,Stripe processing fee
+txn_264,acct_test_maria_bakery,2026-09-14,2026-10-08,fee,ch_0txn_264,-8.48,0.0,-8.52,usd,available,,,,,6576.0,2297.26,Stripe processing fee
+txn_265,acct_test_maria_bakery,2026-09-21,2026-10-06,charge,ch_0txn_265,203.04,12.43,267.21,usd,available,,,,,4660.86,1255.27,Catering order - office breakfast
+txn_266,acct_test_maria_bakery,2026-09-23,2026-10-05,charge,ch_0txn_266,44.87,2.91,234.51,usd,available,,,,,2863.28,4400.46,Catering order - office breakfast
+txn_267,acct_test_maria_bakery,2026-09-06,2026-10-06,charge,ch_0txn_267,82.61,11.16,101.22,usd,available,,,,,1466.23,5221.67,Catering order - office breakfast
+txn_268,acct_test_maria_bakery,2026-11-09,2026-09-27,charge,ch_0txn_268,157.21,12.02,393.44,usd,available,,,,,928.26,4285.03,Wholesale order - café on Elm St
+txn_269,acct_test_maria_bakery,2026-10-17,2026-09-26,charge,ch_0txn_269,202.91,9.3,262.44,usd,pending,,,,,4970.72,3424.7,Wholesale order - café on Elm St
+txn_270,acct_test_maria_bakery,2026-11-16,2026-09-04,fee,ch_0txn_270,-7.95,0.0,-3.41,usd,available,,,,,4663.54,2083.63,Stripe processing fee
+txn_271,acct_test_maria_bakery,2026-09-28,2026-10-05,charge,ch_0txn_271,295.41,0.56,372.38,usd,available,,,,,806.66,866.63,Counter sale - pastry box
+txn_272,acct_test_maria_bakery,2026-10-21,2026-10-05,charge,ch_0txn_272,80.36,9.23,203.89,usd,available,,,,,4174.92,1417.57,Catering order - office breakfast
+txn_273,acct_test_maria_bakery,2026-10-07,2026-10-21,refund,re_00txn_273,-130.8,0.0,-20.85,usd,available,,,,,1960.48,3556.87,Refund of ch_0txn_273 - item sold out
+txn_274,acct_test_maria_bakery,2026-09-05,2026-09-05,charge,ch_0txn_274,329.85,3.86,332.46,usd,available,,,,,4663.53,2130.48,Birthday cake pickup
+txn_275,acct_test_maria_bakery,2026-10-15,2026-11-12,charge,ch_0txn_275,145.43,9.29,367.88,usd,available,,,,,5511.15,4085.54,Birthday cake pickup
+txn_276,acct_test_maria_bakery,2026-10-16,2026-09-29,charge,ch_0txn_276,55.95,2.51,250.3,usd,available,,,,,6687.32,2704.49,Wholesale order - café on Elm St
+txn_277,acct_test_maria_bakery,2026-09-20,2026-11-04,fee,ch_0txn_277,-9.06,0.0,-3.82,usd,pending,,,,,5305.4,1973.73,Stripe processing fee
+txn_278,acct_test_maria_bakery,2026-10-21,2026-11-10,refund,re_00txn_278,-151.88,0.0,-156.54,usd,available,,,,,2410.77,277.3,Refund of ch_0txn_278 - item sold out
+txn_279,acct_test_maria_bakery,2026-10-31,2026-09-12,charge,ch_0txn_279,37.77,6.1,61.63,usd,available,,,,,2161.4,4971.03,Wholesale order - café on Elm St
+txn_280,acct_test_maria_bakery,2026-10-18,2026-09-08,charge,ch_0txn_280,167.45,1.85,270.74,usd,pending,,,,,2579.19,4170.0,Catering order - office breakfast
+txn_281,acct_test_maria_bakery,2026-10-31,2026-10-24,charge,ch_0txn_281,27.26,10.74,385.43,usd,available,,,,,3427.12,2059.49,Wholesale order - café on Elm St
+txn_282,acct_test_maria_bakery,2026-09-27,2026-10-27,refund,re_00txn_282,-155.77,0.0,-101.88,usd,available,,,,,5469.33,2451.32,Refund of ch_0txn_282 - wrong order
+txn_283,acct_test_maria_bakery,2026-09-21,2026-11-01,payout,po_00txn_283,-2057.47,0.0,-3826.94,usd,available,po_00txn_283,paid,2026-09-24,,731.75,1734.36,Automatic payout to bank ****6621
+txn_284,acct_test_maria_bakery,2026-10-16,2026-09-17,charge,ch_0txn_284,217.69,4.23,350.3,usd,pending,,,,,1408.33,3521.79,Catering order - office breakfast
+txn_285,acct_test_maria_bakery,2026-09-24,2026-09-24,fee,ch_0txn_285,-9.19,0.0,-3.94,usd,pending,,,,,6111.62,606.92,Stripe processing fee
+txn_286,acct_test_maria_bakery,2026-09-12,2026-10-23,charge,ch_0txn_286,196.94,1.22,52.68,usd,available,,,,,5702.29,3296.27,Counter sale - sourdough loaves
+txn_287,acct_test_maria_bakery,2026-10-07,2026-09-13,charge,ch_0txn_287,55.41,9.46,128.43,usd,pending,,,,,6148.96,2886.49,Catering order - office breakfast
+txn_288,acct_test_maria_bakery,2026-10-05,2026-10-16,refund,re_00txn_288,-156.43,0.0,-26.1,usd,pending,,,,,719.72,3455.88,Refund of ch_0txn_288 - item sold out
+txn_289,acct_test_maria_bakery,2026-10-29,2026-09-14,charge,ch_0txn_289,234.39,12.45,191.14,usd,available,,,,,2471.8,2717.31,Counter sale - pastry box
+txn_290,acct_test_maria_bakery,2026-09-09,2026-09-19,payout,po_00txn_290,-3245.94,0.0,-3334.94,usd,available,po_00txn_290,paid,2026-11-11,,2241.16,2701.67,Automatic payout to bank ****6621
+txn_291,acct_test_maria_bakery,2026-11-15,2026-11-03,payout,po_00txn_291,-2181.54,0.0,-1565.15,usd,pending,po_00txn_291,paid,2026-11-11,,4865.72,630.39,Automatic payout to bank ****6621
+txn_292,acct_test_maria_bakery,2026-09-23,2026-09-17,charge,ch_0txn_292,271.53,4.32,326.29,usd,available,,,,,2350.29,2689.9,Birthday cake pickup
+txn_293,acct_test_maria_bakery,2026-09-04,2026-11-03,fee,ch_0txn_293,-11.98,0.0,-2.27,usd,available,,,,,877.44,1761.29,Stripe processing fee
+txn_294,acct_test_maria_bakery,2026-09-25,2026-09-11,fee,ch_0txn_294,-6.71,0.0,-8.18,usd,available,,,,,4468.68,2881.68,Stripe processing fee
+txn_295,acct_test_maria_bakery,2026-10-24,2026-09-29,charge,ch_0txn_295,158.24,3.19,10.35,usd,available,,,,,221.63,862.58,Counter sale - pastry box
+txn_296,acct_test_maria_bakery,2026-09-09,2026-11-16,refund,re_00txn_296,-95.93,0.0,-49.46,usd,available,,,,,3632.32,2672.63,Refund of ch_0txn_296 - item sold out
+txn_297,acct_test_maria_bakery,2026-11-06,2026-10-11,charge,ch_0txn_297,101.22,4.54,169.08,usd,pending,,,,,2014.11,3774.46,Counter sale - pastry box
+txn_298,acct_test_maria_bakery,2026-10-30,2026-10-11,charge,ch_0txn_298,303.03,2.67,83.66,usd,pending,,,,,4303.14,4999.25,Counter sale - sourdough loaves
+txn_299,acct_test_maria_bakery,2026-10-05,2026-11-06,fee,ch_0txn_299,-8.21,0.0,-6.68,usd,available,,,,,1799.97,5231.74,Stripe processing fee
+txn_300,acct_test_maria_bakery,2026-09-07,2026-11-08,charge,ch_0txn_300,230.98,9.17,361.15,usd,available,,,,,1128.51,1164.87,Morning coffee and croissant
+txn_301,acct_test_maria_bakery,2026-10-17,2026-09-15,charge,ch_0txn_301,34.74,7.38,216.62,usd,available,,,,,5227.21,3095.7,Birthday cake pickup
+txn_302,acct_test_maria_bakery,2026-10-07,2026-09-15,charge,ch_0txn_302,213.61,2.78,294.74,usd,available,,,,,4724.2,1517.35,Catering order - office breakfast
+txn_303,acct_test_maria_bakery,2026-10-12,2026-09-24,charge,ch_0txn_303,142.47,9.55,166.16,usd,available,,,,,2434.01,4781.64,Morning coffee and croissant
+txn_304,acct_test_maria_bakery,2026-10-25,2026-11-17,charge,ch_0txn_304,123.39,6.42,105.55,usd,pending,,,,,542.82,1817.21,Counter sale - sourdough loaves
+txn_305,acct_test_maria_bakery,2026-11-11,2026-10-08,payout,po_00txn_305,-2106.51,0.0,-3585.18,usd,available,po_00txn_305,paid,2026-10-30,,5766.72,3756.0,Automatic payout to bank ****6621
+txn_306,acct_test_maria_bakery,2026-10-05,2026-11-01,charge,ch_0txn_306,265.11,10.2,189.93,usd,available,,,,,5515.27,1651.11,Morning coffee and croissant
+txn_307,acct_test_maria_bakery,2026-09-20,2026-11-04,fee,ch_0txn_307,-8.0,0.0,-7.53,usd,available,,,,,5811.68,5142.19,Stripe processing fee
+txn_308,acct_test_maria_bakery,2026-09-11,2026-10-26,payout,po_00txn_308,-1738.87,0.0,-1729.79,usd,available,po_00txn_308,paid,2026-10-15,,1029.3,5040.61,Automatic payout to bank ****6621
+txn_309,acct_test_maria_bakery,2026-11-15,2026-09-24,fee,ch_0txn_309,-10.95,0.0,-0.62,usd,available,,,,,5771.19,5092.67,Stripe processing fee
+txn_310,acct_test_maria_bakery,2026-10-19,2026-10-15,charge,ch_0txn_310,112.49,6.73,396.16,usd,available,,,,,5959.11,2363.51,Counter sale - pastry box
+txn_311,acct_test_maria_bakery,2026-10-31,2026-09-04,charge,ch_0txn_311,380.68,10.09,332.51,usd,available,,,,,6606.05,1910.05,Counter sale - pastry box
+txn_312,acct_test_maria_bakery,2026-09-23,2026-10-08,charge,ch_0txn_312,88.47,5.05,128.3,usd,available,,,,,6791.11,4476.53,Wholesale order - café on Elm St
+txn_313,acct_test_maria_bakery,2026-09-04,2026-09-12,fee,ch_0txn_313,-9.7,0.0,-5.67,usd,available,,,,,1585.94,4019.23,Stripe processing fee
+txn_314,acct_test_maria_bakery,2026-09-22,2026-09-23,fee,ch_0txn_314,-4.76,0.0,-9.38,usd,available,,,,,3432.44,130.19,Stripe processing fee
+txn_315,acct_test_maria_bakery,2026-11-16,2026-09-27,charge,ch_0txn_315,134.85,7.4,404.8,usd,available,,,,,2628.46,2963.17,Counter sale - sourdough loaves
+txn_316,acct_test_maria_bakery,2026-10-13,2026-10-12,payout,po_00txn_316,-2842.79,0.0,-2611.46,usd,available,po_00txn_316,paid,2026-10-16,,5607.69,1650.11,Automatic payout to bank ****6621
+txn_317,acct_test_maria_bakery,2026-10-16,2026-09-07,fee,ch_0txn_317,-12.45,0.0,-7.33,usd,available,,,,,5554.72,980.71,Stripe processing fee
+txn_318,acct_test_maria_bakery,2026-11-08,2026-09-11,refund,re_00txn_318,-108.68,0.0,-158.6,usd,available,,,,,1315.45,1218.57,Refund of ch_0txn_318 - duplicate charge
+txn_319,acct_test_maria_bakery,2026-09-14,2026-09-06,payout,po_00txn_319,-3318.8,0.0,-957.34,usd,available,po_00txn_319,paid,2026-11-07,,1486.59,2794.43,Automatic payout to bank ****6621
+txn_320,acct_test_maria_bakery,2026-11-16,2026-10-04,fee,ch_0txn_320,-9.05,0.0,-11.93,usd,pending,,,,,2399.65,3941.75,Stripe processing fee
+txn_321,acct_test_maria_bakery,2026-09-28,2026-09-07,charge,ch_0txn_321,217.05,4.47,129.48,usd,available,,,,,3982.94,2264.86,Counter sale - sourdough loaves
+txn_322,acct_test_maria_bakery,2026-10-19,2026-09-17,fee,ch_0txn_322,-11.48,0.0,-9.84,usd,available,,,,,1006.1,3426.64,Stripe processing fee
+txn_323,acct_test_maria_bakery,2026-09-06,2026-11-09,charge,ch_0txn_323,124.69,7.36,38.74,usd,available,,,,,6000.09,1665.86,Morning coffee and croissant
+txn_324,acct_test_maria_bakery,2026-09-15,2026-09-19,refund,re_00txn_324,-125.14,0.0,-51.39,usd,available,,,,,445.85,1198.65,Refund of ch_0txn_324 - item sold out
+txn_325,acct_test_maria_bakery,2026-10-05,2026-10-26,payout,po_00txn_325,-2269.38,0.0,-3456.18,usd,available,po_00txn_325,paid,2026-10-09,,536.58,1459.66,Automatic payout to bank ****6621
+txn_326,acct_test_maria_bakery,2026-10-16,2026-10-09,charge,ch_0txn_326,59.08,12.23,87.22,usd,available,,,,,959.17,5313.88,Catering order - office breakfast
+txn_327,acct_test_maria_bakery,2026-09-22,2026-10-17,payout,po_00txn_327,-1698.61,0.0,-2141.59,usd,available,po_00txn_327,paid,2026-09-27,,3549.37,3987.49,Automatic payout to bank ****6621
+txn_328,acct_test_maria_bakery,2026-11-04,2026-10-27,fee,ch_0txn_328,-11.37,0.0,-9.05,usd,pending,,,,,5065.52,1619.56,Stripe processing fee
+txn_329,acct_test_maria_bakery,2026-10-08,2026-10-04,payout,po_00txn_329,-4047.43,0.0,-2820.56,usd,available,po_00txn_329,paid,2026-09-15,,5414.28,792.85,Automatic payout to bank ****6621
+txn_330,acct_test_maria_bakery,2026-11-04,2026-09-19,charge,ch_0txn_330,101.15,6.29,336.5,usd,available,,,,,1087.38,284.55,Catering order - office breakfast
+txn_331,acct_test_maria_bakery,2026-09-09,2026-11-01,charge,ch_0txn_331,219.38,10.91,100.04,usd,available,,,,,2978.47,3400.43,Birthday cake pickup
+txn_332,acct_test_maria_bakery,2026-10-08,2026-11-11,payout,po_00txn_332,-3321.58,0.0,-2183.49,usd,available,po_00txn_332,paid,2026-09-15,,6465.95,2909.21,Automatic payout to bank ****6621
+txn_333,acct_test_maria_bakery,2026-10-08,2026-10-18,charge,ch_0txn_333,109.52,2.31,247.03,usd,pending,,,,,6611.69,1012.21,Catering order - office breakfast
+txn_334,acct_test_maria_bakery,2026-09-03,2026-10-15,charge,ch_0txn_334,161.53,3.49,301.73,usd,pending,,,,,6600.98,597.05,Catering order - office breakfast
+txn_335,acct_test_maria_bakery,2026-11-01,2026-11-08,refund,re_00txn_335,-153.91,0.0,-164.78,usd,available,,,,,6301.82,1427.86,Refund of ch_0txn_335 - duplicate charge
+txn_336,acct_test_maria_bakery,2026-10-14,2026-10-01,payout_cancel,po_00txn_336,566.96,0.0,1436.36,usd,available,po_00txn_336,canceled,2026-09-06,,4614.75,2394.38,Payout canceled - funds returned to Stripe balance
+txn_337,acct_test_maria_bakery,2026-10-13,2026-10-05,charge,ch_0txn_337,206.95,8.16,334.14,usd,available,,,,,6648.4,4916.78,Catering order - office breakfast
+txn_338,acct_test_maria_bakery,2026-10-19,2026-09-28,charge,ch_0txn_338,101.0,7.73,225.76,usd,pending,,,,,2239.8,2366.64,Counter sale - sourdough loaves
+txn_339,acct_test_maria_bakery,2026-09-17,2026-09-09,refund,re_00txn_339,-43.95,0.0,-119.27,usd,pending,,,,,701.0,1235.35,Refund of ch_0txn_339 - item sold out
+txn_340,acct_test_maria_bakery,2026-10-11,2026-10-09,charge,ch_0txn_340,69.2,11.78,93.05,usd,available,,,,,3161.82,886.04,Counter sale - sourdough loaves
+txn_341,acct_test_maria_bakery,2026-09-22,2026-11-15,payout_cancel,po_00txn_341,422.88,0.0,1385.11,usd,pending,po_00txn_341,canceled,2026-11-13,,5408.71,3987.15,Payout canceled - funds returned to Stripe balance
+txn_342,acct_test_maria_bakery,2026-11-03,2026-11-06,fee,ch_0txn_342,-10.94,0.0,-0.94,usd,available,,,,,851.87,3258.53,Stripe processing fee
+txn_343,acct_test_maria_bakery,2026-11-15,2026-10-28,charge,ch_0txn_343,99.66,9.33,312.84,usd,available,,,,,6015.37,1748.65,Birthday cake pickup
+txn_344,acct_test_maria_bakery,2026-09-27,2026-09-19,refund,re_00txn_344,-108.1,0.0,-52.75,usd,available,,,,,3919.62,5001.48,Refund of ch_0txn_344 - item sold out
+txn_345,acct_test_maria_bakery,2026-11-11,2026-10-12,fee,ch_0txn_345,-8.34,0.0,-0.94,usd,available,,,,,3157.22,593.43,Stripe processing fee
+txn_346,acct_test_maria_bakery,2026-10-12,2026-09-12,fee,ch_0txn_346,-6.58,0.0,-2.41,usd,pending,,,,,2338.38,3196.22,Stripe processing fee
+txn_347,acct_test_maria_bakery,2026-11-13,2026-09-03,payout,po_00txn_347,-4165.04,0.0,-3775.85,usd,available,po_00txn_347,paid,2026-10-02,,1974.39,4917.37,Automatic payout to bank ****6621
+txn_348,acct_test_maria_bakery,2026-10-04,2026-09-28,payout,po_00txn_348,-2774.54,0.0,-3018.78,usd,available,po_00txn_348,paid,2026-09-13,,1171.23,2486.11,Automatic payout to bank ****6621
+txn_349,acct_test_maria_bakery,2026-10-06,2026-10-01,fee,ch_0txn_349,-9.27,0.0,-11.5,usd,available,,,,,1296.95,319.88,Stripe processing fee
+txn_350,acct_test_maria_bakery,2026-10-17,2026-10-15,charge,ch_0txn_350,183.43,2.61,121.46,usd,available,,,,,3744.95,1663.22,Morning coffee and croissant
+txn_351,acct_test_maria_bakery,2026-10-11,2026-09-12,payout,po_00txn_351,-1941.28,0.0,-1000.43,usd,available,po_00txn_351,paid,2026-11-03,,162.15,885.61,Automatic payout to bank ****6621
+txn_352,acct_test_maria_bakery,2026-09-30,2026-09-17,payout,po_00txn_352,-3381.41,0.0,-1710.69,usd,available,po_00txn_352,paid,2026-09-03,,3203.77,1380.24,Automatic payout to bank ****6621
+txn_353,acct_test_maria_bakery,2026-10-30,2026-09-16,fee,ch_0txn_353,-8.44,0.0,-10.85,usd,available,,,,,2963.67,3580.75,Stripe processing fee
+txn_354,acct_test_maria_bakery,2026-09-09,2026-10-15,charge,ch_0txn_354,66.9,3.3,303.76,usd,available,,,,,3630.1,135.64,Wholesale order - café on Elm St
+txn_355,acct_test_maria_bakery,2026-10-11,2026-09-08,charge,ch_0txn_355,200.26,1.89,105.09,usd,pending,,,,,3733.15,1717.45,Catering order - office breakfast
+txn_356,acct_test_maria_bakery,2026-10-01,2026-11-15,charge,ch_0txn_356,109.91,5.87,76.29,usd,available,,,,,4641.85,4591.13,Catering order - office breakfast
+txn_357,acct_test_maria_bakery,2026-10-14,2026-10-08,charge,ch_0txn_357,20.41,11.08,279.86,usd,available,,,,,6778.24,3248.37,Birthday cake pickup
+txn_358,acct_test_maria_bakery,2026-09-22,2026-09-05,charge,ch_0txn_358,324.48,2.38,63.3,usd,available,,,,,2859.53,140.38,Morning coffee and croissant
+txn_359,acct_test_maria_bakery,2026-10-15,2026-11-14,fee,ch_0txn_359,-8.2,0.0,-3.2,usd,available,,,,,723.77,3120.27,Stripe processing fee
+txn_360,acct_test_maria_bakery,2026-10-17,2026-09-11,charge,ch_0txn_360,325.28,7.4,327.81,usd,available,,,,,3637.06,3257.55,Birthday cake pickup
+txn_361,acct_test_maria_bakery,2026-09-15,2026-10-13,charge,ch_0txn_361,164.85,4.8,194.87,usd,available,,,,,2776.47,1971.67,Morning coffee and croissant
+txn_362,acct_test_maria_bakery,2026-09-20,2026-10-06,fee,ch_0txn_362,-10.28,0.0,-8.01,usd,available,,,,,5931.13,1925.77,Stripe processing fee
+txn_363,acct_test_maria_bakery,2026-10-23,2026-09-29,charge,ch_0txn_363,384.59,5.63,326.22,usd,available,,,,,5239.63,1999.48,Counter sale - sourdough loaves
+txn_364,acct_test_maria_bakery,2026-10-27,2026-10-25,payout,po_00txn_364,-1884.79,0.0,-3085.83,usd,available,po_00txn_364,paid,2026-10-01,,2836.33,5095.68,Automatic payout to bank ****6621
+txn_365,acct_test_maria_bakery,2026-11-16,2026-10-27,payout,po_00txn_365,-4080.64,0.0,-878.97,usd,available,po_00txn_365,paid,2026-10-21,,1664.93,713.98,Automatic payout to bank ****6621
+txn_366,acct_test_maria_bakery,2026-10-29,2026-10-13,charge,ch_0txn_366,131.02,3.15,234.77,usd,available,,,,,4776.38,1493.9,Morning coffee and croissant
+txn_367,acct_test_maria_bakery,2026-09-02,2026-10-09,refund,re_00txn_367,-62.31,0.0,-46.25,usd,available,,,,,5870.44,3912.67,Refund of ch_0txn_367 - duplicate charge
+txn_368,acct_test_maria_bakery,2026-11-13,2026-11-12,charge,ch_0txn_368,290.56,5.19,337.69,usd,pending,,,,,6501.22,2614.96,Catering order - office breakfast
+txn_369,acct_test_maria_bakery,2026-10-31,2026-09-20,charge,ch_0txn_369,178.86,5.59,131.45,usd,available,,,,,6514.78,1435.05,Catering order - office breakfast
+txn_370,acct_test_maria_bakery,2026-11-16,2026-10-03,fee,ch_0txn_370,-5.76,0.0,-4.19,usd,available,,,,,6412.39,242.4,Stripe processing fee
+txn_371,acct_test_maria_bakery,2026-09-26,2026-11-09,charge,ch_0txn_371,29.96,3.76,67.76,usd,available,,,,,1017.04,1900.47,Birthday cake pickup
+txn_372,acct_test_maria_bakery,2026-11-15,2026-09-23,charge,ch_0txn_372,401.5,3.55,122.22,usd,available,,,,,2005.55,5103.13,Morning coffee and croissant
+txn_373,acct_test_maria_bakery,2026-09-14,2026-10-25,charge,ch_0txn_373,260.76,12.01,382.98,usd,pending,,,,,347.37,3945.33,Birthday cake pickup
+txn_374,acct_test_maria_bakery,2026-11-01,2026-10-13,payout,po_00txn_374,-3963.01,0.0,-1629.67,usd,available,po_00txn_374,paid,2026-11-10,,2436.51,3922.91,Automatic payout to bank ****6621
+txn_375,acct_test_maria_bakery,2026-09-06,2026-09-04,charge,ch_0txn_375,240.75,4.98,141.56,usd,available,,,,,6264.1,4562.04,Birthday cake pickup
+txn_376,acct_test_maria_bakery,2026-10-22,2026-11-11,payout,po_00txn_376,-3992.2,0.0,-3386.73,usd,available,po_00txn_376,paid,2026-09-12,,6264.62,3452.84,Automatic payout to bank ****6621
+txn_377,acct_test_maria_bakery,2026-10-23,2026-11-14,fee,ch_0txn_377,-9.71,0.0,-11.26,usd,available,,,,,5360.13,1505.03,Stripe processing fee
+txn_378,acct_test_maria_bakery,2026-09-28,2026-10-22,charge,ch_0txn_378,10.36,6.77,175.11,usd,available,,,,,6541.72,585.34,Birthday cake pickup
+txn_379,acct_test_maria_bakery,2026-10-17,2026-10-15,payout_cancel,po_00txn_379,802.65,0.0,429.29,usd,pending,po_00txn_379,canceled,2026-09-14,,5349.96,575.57,Payout canceled - funds returned to Stripe balance
+txn_380,acct_test_maria_bakery,2026-09-15,2026-10-09,payout,po_00txn_380,-3705.18,0.0,-1162.61,usd,available,po_00txn_380,paid,2026-10-13,,1646.15,1315.76,Automatic payout to bank ****6621
+txn_381,acct_test_maria_bakery,2026-11-12,2026-09-09,charge,ch_0txn_381,107.4,3.49,257.05,usd,available,,,,,1311.6,1623.15,Wholesale order - café on Elm St
+txn_382,acct_test_maria_bakery,2026-10-28,2026-09-28,payout,po_00txn_382,-3657.73,0.0,-1101.15,usd,available,po_00txn_382,paid,2026-10-23,,2482.6,1445.12,Automatic payout to bank ****6621
+txn_383,acct_test_maria_bakery,2026-09-17,2026-11-18,charge,ch_0txn_383,234.83,7.8,145.72,usd,pending,,,,,1988.87,1677.89,Counter sale - pastry box
+txn_384,acct_test_maria_bakery,2026-10-21,2026-10-01,charge,ch_0txn_384,13.06,10.27,178.23,usd,available,,,,,318.19,4298.91,Birthday cake pickup
+txn_385,acct_test_maria_bakery,2026-09-03,2026-09-09,charge,ch_0txn_385,115.3,8.22,368.1,usd,available,,,,,2947.98,4301.96,Counter sale - sourdough loaves
+txn_386,acct_test_maria_bakery,2026-10-14,2026-09-08,charge,ch_0txn_386,166.19,9.44,12.98,usd,available,,,,,4342.13,4511.7,Birthday cake pickup
+txn_387,acct_test_maria_bakery,2026-09-05,2026-09-30,charge,ch_0txn_387,249.11,1.73,79.78,usd,pending,,,,,3838.37,1280.06,Birthday cake pickup
+txn_388,acct_test_maria_bakery,2026-10-04,2026-10-24,charge,ch_0txn_388,260.94,10.95,59.51,usd,available,,,,,4534.56,395.68,Counter sale - pastry box
+txn_389,acct_test_maria_bakery,2026-09-16,2026-09-22,charge,ch_0txn_389,106.33,7.8,84.3,usd,available,,,,,6767.77,3600.01,Counter sale - pastry box
+txn_390,acct_test_maria_bakery,2026-11-03,2026-11-15,fee,ch_0txn_390,-4.71,0.0,-6.74,usd,available,,,,,5086.0,2295.79,Stripe processing fee
+txn_391,acct_test_maria_bakery,2026-09-09,2026-10-11,payout,po_00txn_391,-3477.73,0.0,-1416.38,usd,available,po_00txn_391,paid,2026-10-20,,2293.07,1755.02,Automatic payout to bank ****6621
+txn_392,acct_test_maria_bakery,2026-09-13,2026-10-11,charge,ch_0txn_392,61.42,11.8,73.04,usd,available,,,,,5427.84,4687.34,Counter sale - pastry box
+txn_393,acct_test_maria_bakery,2026-10-06,2026-11-08,payout,po_00txn_393,-1774.16,0.0,-2365.51,usd,available,po_00txn_393,paid,2026-11-08,,5546.16,1460.13,Automatic payout to bank ****6621
+txn_394,acct_test_maria_bakery,2026-10-21,2026-09-28,charge,ch_0txn_394,229.73,5.5,140.85,usd,available,,,,,4948.34,257.76,Wholesale order - café on Elm St
+txn_395,acct_test_maria_bakery,2026-11-13,2026-11-17,charge,ch_0txn_395,15.37,12.02,402.48,usd,available,,,,,6132.38,3926.28,Wholesale order - café on Elm St
+txn_396,acct_test_maria_bakery,2026-09-18,2026-11-06,charge,ch_0txn_396,62.43,1.42,66.32,usd,available,,,,,1044.45,4837.18,Counter sale - sourdough loaves
+txn_397,acct_test_maria_bakery,2026-10-27,2026-10-08,charge,ch_0txn_397,95.86,10.18,396.13,usd,available,,,,,405.88,3544.62,Counter sale - sourdough loaves
+txn_398,acct_test_maria_bakery,2026-11-06,2026-10-24,charge,ch_0txn_398,13.41,8.63,192.54,usd,available,,,,,1871.75,2060.86,Wholesale order - café on Elm St
+txn_399,acct_test_maria_bakery,2026-10-28,2026-11-04,charge,ch_0txn_399,169.68,10.81,214.0,usd,available,,,,,4331.19,3856.3,Catering order - office breakfast
+txn_400,acct_test_maria_bakery,2026-11-11,2026-10-24,charge,ch_0txn_400,208.91,1.24,390.84,usd,pending,,,,,6113.54,4795.51,Birthday cake pickup
+txn_401,acct_test_maria_bakery,2026-11-14,2026-09-26,charge,ch_0txn_401,122.34,3.52,369.61,usd,available,,,,,3653.67,4605.19,Wholesale order - café on Elm St
+txn_402,acct_test_maria_bakery,2026-09-26,2026-10-11,refund,re_00txn_402,-175.34,0.0,-50.85,usd,available,,,,,2607.6,1421.52,Refund of ch_0txn_402 - duplicate charge
+txn_403,acct_test_maria_bakery,2026-10-07,2026-10-08,charge,ch_0txn_403,361.22,1.33,184.05,usd,available,,,,,5023.94,5331.6,Counter sale - pastry box
+txn_404,acct_test_maria_bakery,2026-10-14,2026-10-26,charge,ch_0txn_404,203.72,8.02,109.12,usd,pending,,,,,222.31,4351.03,Counter sale - sourdough loaves
+txn_405,acct_test_maria_bakery,2026-10-24,2026-09-17,charge,ch_0txn_405,117.09,1.42,47.33,usd,available,,,,,4322.69,2086.88,Counter sale - pastry box
+txn_406,acct_test_maria_bakery,2026-10-23,2026-11-13,payout,po_00txn_406,-3267.54,0.0,-3877.76,usd,available,po_00txn_406,paid,2026-10-12,,6227.49,3231.61,Automatic payout to bank ****6621
+txn_407,acct_test_maria_bakery,2026-09-29,2026-10-29,fee,ch_0txn_407,-11.65,0.0,-3.87,usd,pending,,,,,3846.22,1461.43,Stripe processing fee
+txn_408,acct_test_maria_bakery,2026-10-07,2026-10-22,charge,ch_0txn_408,167.57,10.48,186.94,usd,available,,,,,2997.56,2990.57,Counter sale - sourdough loaves
+txn_409,acct_test_maria_bakery,2026-09-22,2026-09-16,charge,ch_0txn_409,273.99,3.74,168.27,usd,available,,,,,1181.98,529.16,Counter sale - pastry box
+txn_410,acct_test_maria_bakery,2026-09-06,2026-10-23,payout,po_00txn_410,-3620.32,0.0,-2259.23,usd,available,po_00txn_410,paid,2026-10-03,,1515.5,901.28,Automatic payout to bank ****6621
+txn_411,acct_test_maria_bakery,2026-10-28,2026-10-02,charge,ch_0txn_411,99.78,5.58,308.13,usd,available,,,,,2066.5,4368.95,Morning coffee and croissant
+txn_412,acct_test_maria_bakery,2026-09-06,2026-11-14,charge,ch_0txn_412,96.17,7.86,329.0,usd,available,,,,,4577.94,1989.71,Birthday cake pickup
+txn_413,acct_test_maria_bakery,2026-11-14,2026-09-08,fee,ch_0txn_413,-7.51,0.0,-8.78,usd,available,,,,,5284.04,404.84,Stripe processing fee
+txn_414,acct_test_maria_bakery,2026-09-26,2026-11-05,charge,ch_0txn_414,134.32,11.79,69.22,usd,available,,,,,3174.43,4647.51,Catering order - office breakfast
+txn_415,acct_test_maria_bakery,2026-10-11,2026-09-25,charge,ch_0txn_415,115.95,2.83,203.41,usd,available,,,,,489.29,1382.11,Morning coffee and croissant
+txn_416,acct_test_maria_bakery,2026-11-08,2026-10-10,fee,ch_0txn_416,-3.69,0.0,-4.63,usd,available,,,,,3287.31,3905.18,Stripe processing fee
+txn_417,acct_test_maria_bakery,2026-11-01,2026-09-11,refund,re_00txn_417,-95.57,0.0,-102.15,usd,available,,,,,1112.46,3735.58,Refund of ch_0txn_417 - item sold out
+txn_418,acct_test_maria_bakery,2026-09-09,2026-10-05,refund,re_00txn_418,-119.97,0.0,-91.71,usd,available,,,,,1328.48,62.75,Refund of ch_0txn_418 - duplicate charge
+txn_419,acct_test_maria_bakery,2026-11-14,2026-11-10,payout,po_00txn_419,-3621.75,0.0,-1728.85,usd,pending,po_00txn_419,paid,2026-09-08,,4815.0,215.61,Automatic payout to bank ****6621
+txn_420,acct_test_maria_bakery,2026-10-25,2026-09-14,charge,ch_0txn_420,120.0,3.04,114.52,usd,available,,,,,3303.03,292.82,Counter sale - sourdough loaves
